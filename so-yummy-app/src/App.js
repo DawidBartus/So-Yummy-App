@@ -1,15 +1,16 @@
+import { Route, Routes } from "react-router";
 import "./App.css";
-import MainContainer from "./components/MainContainer";
-import Navigation from "./components/navigation";
+
+import Navigation from "./components/navigation/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-      <MainContainer>
-        <Navigation />
-      </MainContainer>
-    </div>
+    <Routes>
+      {/* <Route path="/" element={<HomePage />} />
+      <Route path="/logIn" element={<LogInPage />} />
+      <Route path="/register" element={<RegisterPage />} /> */}
+      <Route path="/home" element={<Navigation />}></Route>
+    </Routes>
   );
 }
 
