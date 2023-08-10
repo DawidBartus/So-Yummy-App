@@ -1,10 +1,14 @@
 import { styled } from "styled-components";
 
 const SwitchLabel = styled.label`
+  display: none;
   position: relative;
-  display: inline-block;
+
   width: 61px;
   height: 27px;
+  @media (min-width: 1279px) {
+    display: inline-block;
+  }
 `;
 const Input = styled.input`
   opacity: 0;

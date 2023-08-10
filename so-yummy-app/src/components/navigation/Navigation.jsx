@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { ReactComponent as Fork } from "../../utils/navigation.svg";
-import { ReactComponent as Search } from "../../utils/searchIcon.svg";
 import SectionContainer from "../MainContainer";
-import FlexContainer from "../FlexContainer";
 import Switch from "./Switch";
+import MainMenu from "./MainMenu";
+import CompanyIcon from "../../utils/CompanyIcon";
+import MobileMenu from "./MobileMenu";
 
 const NavigationElem = styled.nav`
-  margin-top: 18px;
+  position: relative;
+  padding-top: 18px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -14,27 +15,6 @@ const NavigationElem = styled.nav`
   max-width: 1500px;
 `;
 
-const NavList = styled.ul`
-  display: flex;
-  gap: 30px;
-  @media (max-width: 1278px) {
-    display: none;
-  }
-`;
-const SvgFork = styled.div`
-  width: 44px;
-  height: 44px;
-  background-color: #8baa36;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Anchor = styled.a`
-  &:hover {
-    color: #8baa36;
-  }
-`;
 const AvatarAnchor = styled.a`
   display: flex;
   align-items: center;
@@ -49,44 +29,25 @@ const Avatar = styled.div`
   border-radius: 50%;
   background-color: rebeccapurple;
 `;
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px;
+`;
 
 const Navigation = () => {
   return (
     <SectionContainer>
       <NavigationElem>
-        <Anchor href="#">
-          <SvgFork>
-            <Fork />
-          </SvgFork>
-        </Anchor>
-        <NavList>
-          <li>
-            <Anchor href="#">Categories</Anchor>
-          </li>
-          <li>
-            <Anchor href="#">Add recipes</Anchor>
-          </li>
-          <li>
-            <Anchor href="#">My recipes</Anchor>
-          </li>
-          <li>
-            <Anchor href="#">Favorites</Anchor>
-          </li>
-          <li>
-            <Anchor href="#">Shopping list</Anchor>
-          </li>
-          <li>
-            <Anchor href="#">
-              <Search />
-            </Anchor>
-          </li>
-        </NavList>
+        <CompanyIcon />
+        <MainMenu />
         <FlexContainer style={{ gap: "50px" }}>
           <AvatarAnchor href="#">
             <Avatar />
             Name
           </AvatarAnchor>
           <Switch />
+          <MobileMenu />
         </FlexContainer>
       </NavigationElem>
     </SectionContainer>
