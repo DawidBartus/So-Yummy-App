@@ -60,7 +60,6 @@ const MobileMenu = () => {
 
   const toggleOpen = () => {
     setIsOpen((prevState) => !prevState);
-    console.log(isOpen);
   };
 
   return (
