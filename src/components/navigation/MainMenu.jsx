@@ -21,9 +21,9 @@ const Search = styled(SearchIcon)`
   }
 `;
 
-const MainMenu = () => {
+const MainMenu = ({ style }) => {
   return (
-    <NavList>
+    <NavList style={style}>
       <li>
         <Anchor href="#">Categories</Anchor>
       </li>
@@ -48,4 +48,5 @@ const MainMenu = () => {
   );
 };
 
+export { NavList };
 export default MainMenu;

@@ -17,9 +17,9 @@ const SvgFork = styled.div`
   justify-content: center;
 `;
 
-const CompanyIcon = () => {
+const CompanyIcon = ({ close }) => {
   return (
-    <Anchor href="#">
+    <Anchor href="#" onClick={close}>
       <SvgFork>
         <Fork />
       </SvgFork>

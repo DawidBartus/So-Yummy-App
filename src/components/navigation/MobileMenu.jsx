@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import CompanyIcon from "../../utils/CompanyIcon";
+import MainMenu from "./MainMenu";
+import Switch from "./Switch";
 
 const MobileMenuIcon = styled(Menu)`
   cursor: pointer;
@@ -15,7 +17,7 @@ const MobileMenuIcon = styled(Menu)`
   }
 `;
 
-const MenuWrapper = styled.div`
+const MenuWrapper = styled.section`
   background-color: #ebf3d4;
   position: relative;
   overflow: hidden;
@@ -44,13 +46,25 @@ const FlexContainer = styled.div`
   padding: 22px 16px 0;
 `;
 
+const CenteredFlexContainer = styled(FlexContainer)`
+  justify-content: center;
+`;
+
+const mobileCss = {
+  display: "block",
+  textAlign: "center",
+};
 const MobileList = ({ close, state }) => {
   return (
     <MenuWrapper open={state}>
       <FlexContainer>
-        <CompanyIcon />
+        <CompanyIcon close={close} />
         <CloseIcon icon={faX} onClick={close} />
       </FlexContainer>
+      <CenteredFlexContainer>
+        <MainMenu style={mobileCss} />
+      </CenteredFlexContainer>
+      <Switch />
     </MenuWrapper>
   );
 };
