@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.9437cb9a.css",
-    "main.js": "/so-yummy-app/static/js/main.9b3152a3.js",
+    "main.js": "/so-yummy-app/static/js/main.b1493f3f.js",
     "static/js/787.10cc4de4.chunk.js": "/so-yummy-app/static/js/787.10cc4de4.chunk.js",
     "static/media/spinachMobile.png": "/so-yummy-app/static/media/spinachMobile.4d437f3f129bb5d4b8f4.png",
     "static/media/navigation.svg": "/so-yummy-app/static/media/navigation.96d4835c98cc2c8e9e3b7fba81920650.svg",
@@ -9,11 +9,11 @@
     "static/media/searchIcon.svg": "/so-yummy-app/static/media/searchIcon.d28ae7618c62d6887f66b5e7cba3adde.svg",
     "static/media/hamburger.svg": "/so-yummy-app/static/media/hamburger.8bc83084eae8d84c41d80e5e8f02ae9b.svg",
     "main.9437cb9a.css.map": "/so-yummy-app/static/css/main.9437cb9a.css.map",
-    "main.9b3152a3.js.map": "/so-yummy-app/static/js/main.9b3152a3.js.map",
+    "main.b1493f3f.js.map": "/so-yummy-app/static/js/main.b1493f3f.js.map",
     "787.10cc4de4.chunk.js.map": "/so-yummy-app/static/js/787.10cc4de4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9437cb9a.css",
-    "static/js/main.9b3152a3.js"
+    "static/js/main.b1493f3f.js"
   ]
 }
