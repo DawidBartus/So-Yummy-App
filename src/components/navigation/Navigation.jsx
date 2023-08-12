@@ -37,11 +37,17 @@ const FlexContainer = styled.div`
   align-items: center;
   gap: 50px;
 `;
+const PageSection = styled.section`
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.mainBg};
+  position: relative;
+  z-index: -1;
+  transition: 1s;
+`;
 
 const Navigation = () => {
   return (
     <>
-      {" "}
       <SectionContainer>
         <NavigationElem>
           <CompanyIcon />
@@ -56,7 +62,9 @@ const Navigation = () => {
           </FlexContainer>
         </NavigationElem>
       </SectionContainer>
-      <Outlet />
+      <PageSection>
+        <Outlet />
+      </PageSection>
     </>
   );
 };

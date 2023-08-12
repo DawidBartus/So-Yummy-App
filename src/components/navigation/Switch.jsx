@@ -33,7 +33,7 @@ const Slider = styled.span`
   bottom: 0;
   background-color: #fff;
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
-  transition: 2s;
+  transition: 1s;
   border-radius: 50px;
   &::before {
     content: "";
@@ -43,7 +43,7 @@ const Slider = styled.span`
     left: 4px;
     bottom: 3px;
     background: linear-gradient(180deg, #fff 0%, #e8eaea 100%);
-    transition: 2s;
+    transition: 1s;
     border-radius: 50%;
   }
 `;

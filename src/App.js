@@ -3,17 +3,9 @@ import "./App.css";
 import Navigation from "./components/navigation/Navigation";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
-
-const darkTheme = {
-  mainBg: "#1E1F28",
-  mobileBg: "#1E1F28",
-  mainTextColor: "#FAFAFA",
-};
-const lightTheme = {
-  mainBg: "white",
-  mobileBg: "#EBF3D4",
-  mainTextColor: "#23262A",
-};
+import lightTheme, { darkTheme } from "./Theme";
+import MainPage from "./pages/MainPage";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -21,10 +13,13 @@ function App() {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Routes>
-        {/* <Route path="/" element={<HomePage />} />
-      <Route path="/logIn" element={<LogInPage />} />
+        <Route path="/" element={<MainPage />} />
+        {/*   <Route path="/logIn" element={<LogInPage />} />
       <Route path="/register" element={<RegisterPage />} /> */}
-        <Route path="/" element={<Navigation />}></Route>
+        <Route path="/home" element={<Navigation />}>
+          <Route path="*" element={<NotFound />}></Route>
+        </Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </ThemeProvider>
   );

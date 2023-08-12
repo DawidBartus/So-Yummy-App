@@ -32,7 +32,7 @@ const BackgroundImage = styled.div`
 
 const MenuWrapper = styled.section`
   background-color: ${(props) => props.theme.mobileBg};
-  transition: background-color 2s ease, transform 1s;
+  transition: background-color 1s ease, transform 1s;
   position: relative;
   overflow: hidden;
   position: fixed;
