@@ -1,4 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
+import { togglePageMode } from "../../redux/pageModeSlice";
 
 const SwitchLabel = styled.label`
   display: none;
@@ -19,7 +21,6 @@ const Input = styled.input`
   }
   &:checked + span::before {
     transform: translateX(30px);
-    box-shadow: 8px 8px 24px 0px #8baa36;
   }
 `;
 
@@ -45,15 +46,18 @@ const Slider = styled.span`
     transition: 2s;
     border-radius: 50%;
   }
-  &:hover::before {
-    box-shadow: -8px 8px 24px 0px #8baa36;
-  }
 `;
 
 const Switch = ({ style }) => {
+  const dispatch = useDispatch();
+
+  const handlePageMode = () => {
+    dispatch(togglePageMode());
+  };
+
   return (
-    <SwitchLabel style={style}>
-      <Input type="checkbox" name="theme" id="theme" />
+    <SwitchLabel style={style} onClick={handlePageMode}>
+      <Input type="checkbox" id="theme" onChange={handlePageMode} />
       <Slider />
     </SwitchLabel>
   );

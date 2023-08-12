@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
 import { ReactComponent as Menu } from "../../utils/hamburger.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import CompanyIcon from "../../utils/CompanyIcon";
 import MainMenu from "./MainMenu";
 import Switch from "./Switch";
 import spinach from "../../utils/spinachMobile.png";
+import { useSelector } from "react-redux";
 
 const MobileMenuIcon = styled(Menu)`
   cursor: pointer;
@@ -23,6 +24,7 @@ const BackgroundImage = styled.div`
   height: 343px;
   bottom: 0;
   right: 0;
+  z-index: -1;
   background-image: url(${spinach});
 `;
 
@@ -82,11 +84,13 @@ const mobileCss = {
 const switchON = {
   margin: "18px 16px",
   display: "inline-block",
-  "@media (max-width: 1279px)": {
+  "@media (maxWidth: 1279px)": {
     display: "inline-block",
   },
 };
 const MobileList = ({ close, state }) => {
+  const mode = useSelector((state) => state.pageMode);
+  useEffect(() => {}, [mode]);
   return (
     <MenuWrapper open={state}>
       <FlexContainer>
