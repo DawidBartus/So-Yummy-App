@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { togglePageMode } from "../../redux/pageModeSlice";
-import { useEffect } from "react";
 
 const SwitchLabel = styled.label`
   display: none;

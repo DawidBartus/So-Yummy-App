@@ -4,7 +4,6 @@ import Navigation from "./components/navigation/Navigation";
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
-const theme = {};
 const darkTheme = {
   mainBg: "#1E1F28",
   mobileBg: "#1E1F28",
