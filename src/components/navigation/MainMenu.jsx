@@ -10,12 +10,18 @@ const NavList = styled.ul`
 `;
 
 const Anchor = styled.a`
+  transition: 1s;
+  color: ${({ theme }) => theme.mainTextColor};
   &:hover {
     color: #8baa36;
   }
 `;
 
 const Search = styled(SearchIcon)`
+  path {
+    transition: 1s;
+    stroke: ${({ theme }) => theme.mainTextColor};
+  }
   &:hover path {
     stroke: #8baa36;
   }
