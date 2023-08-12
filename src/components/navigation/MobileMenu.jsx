@@ -6,6 +6,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import CompanyIcon from "../../utils/CompanyIcon";
 import MainMenu from "./MainMenu";
 import Switch from "./Switch";
+import spinach from "../../utils/spinachMobile.png";
 
 const MobileMenuIcon = styled(Menu)`
   cursor: pointer;
@@ -15,6 +16,14 @@ const MobileMenuIcon = styled(Menu)`
   @media (min-width: 1279px) {
     display: none;
   }
+`;
+const BackgroundImage = styled.div`
+  position: fixed;
+  width: 321px;
+  height: 343px;
+  bottom: 0;
+  right: 0;
+  background-image: url(${spinach});
 `;
 
 const MenuWrapper = styled.section`
@@ -29,6 +38,9 @@ const MenuWrapper = styled.section`
   transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
   transition: transform 1s;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media (min-width: 1279px) {
     transform: translateX(100%);
   }
@@ -37,22 +49,42 @@ const MenuWrapper = styled.section`
 const CloseIcon = styled(FontAwesomeIcon)`
   width: 22px;
   height: 22px;
+  cursor: pointer;
 `;
 
 const FlexContainer = styled.div`
+  padding: 24px 16px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 16px 0;
 `;
 
 const CenteredFlexContainer = styled(FlexContainer)`
   justify-content: center;
+  padding: 0px;
+  align-items: flex-start;
 `;
 
 const mobileCss = {
-  display: "block",
+  display: "flex",
+  flexDirection: "column",
   textAlign: "center",
+  color: "#22252A",
+  fontFamily: "Poppins",
+  fontSize: "18px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "18px",
+  letterSpacing: "-0.36px",
+  gap: "32px",
+};
+
+const switchON = {
+  margin: "18px 16px",
+  display: "inline-block",
+  "@media (max-width: 1279px)": {
+    display: "inline-block",
+  },
 };
 const MobileList = ({ close, state }) => {
   return (
@@ -64,7 +96,8 @@ const MobileList = ({ close, state }) => {
       <CenteredFlexContainer>
         <MainMenu style={mobileCss} />
       </CenteredFlexContainer>
-      <Switch />
+      <Switch style={switchON} />
+      <BackgroundImage />
     </MenuWrapper>
   );
 };

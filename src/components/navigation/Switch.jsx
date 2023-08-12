@@ -50,9 +50,9 @@ const Slider = styled.span`
   }
 `;
 
-const Switch = () => {
+const Switch = ({ style }) => {
   return (
-    <SwitchLabel>
+    <SwitchLabel style={style}>
       <Input type="checkbox" name="theme" id="theme" />
       <Slider />
     </SwitchLabel>
