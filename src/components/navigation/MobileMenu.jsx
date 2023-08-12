@@ -39,7 +39,7 @@ const MenuWrapper = styled.section`
   top: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - env(safe-area-inset-top));
   transform: ${(props) => (props.open ? "translateX(0)" : "translateX(100%)")};
   z-index: 5;
   display: flex;

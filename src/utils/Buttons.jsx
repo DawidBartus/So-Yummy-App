@@ -10,12 +10,14 @@ const Button = styled(Link)`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  transition: 1s;
 `;
 
 const RegisterButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.buttonNormal};
   background-color: ${({ theme }) => theme.standardGreen};
   &:hover {
+    border-radius: 44px 24px;
     border: 1px solid ${({ theme }) => theme.standardGreen};
     background-color: ${({ theme }) => theme.standardBlack};
     color: ${({ theme }) => theme.standardWhite};
@@ -27,6 +29,7 @@ const SignInButton = styled(Button)`
   background-color: transparent;
   color: ${({ theme }) => theme.standardWhite};
   &:hover {
+    border-radius: 44px 24px;
     background-color: ${({ theme }) => theme.standardBlack};
   }
 `;
