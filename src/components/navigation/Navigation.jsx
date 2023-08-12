@@ -4,6 +4,7 @@ import Switch from "./Switch";
 import MainMenu from "./MainMenu";
 import CompanyIcon from "../../utils/CompanyIcon";
 import MobileMenu from "./MobileMenu";
+import { Outlet } from "react-router";
 
 const NavigationElem = styled.nav`
   position: relative;
@@ -18,6 +19,8 @@ const NavigationElem = styled.nav`
 const AvatarAnchor = styled.a`
   display: flex;
   align-items: center;
+  transition: 1s;
+  color: ${({ theme }) => theme.mainTextColor};
   gap: 18px;
   &:hover {
     color: #8baa36;
@@ -37,20 +40,24 @@ const FlexContainer = styled.div`
 
 const Navigation = () => {
   return (
-    <SectionContainer>
-      <NavigationElem>
-        <CompanyIcon />
-        <MainMenu />
-        <FlexContainer style={{ gap: "50px" }}>
-          <AvatarAnchor href="#">
-            <Avatar />
-            Name
-          </AvatarAnchor>
-          <Switch />
-          <MobileMenu />
-        </FlexContainer>
-      </NavigationElem>
-    </SectionContainer>
+    <>
+      {" "}
+      <SectionContainer>
+        <NavigationElem>
+          <CompanyIcon />
+          <MainMenu />
+          <FlexContainer style={{ gap: "50px" }}>
+            <AvatarAnchor href="#">
+              <Avatar />
+              Name
+            </AvatarAnchor>
+            <Switch />
+            <MobileMenu />
+          </FlexContainer>
+        </NavigationElem>
+      </SectionContainer>
+      <Outlet />
+    </>
   );
 };
 

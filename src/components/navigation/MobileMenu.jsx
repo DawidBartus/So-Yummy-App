@@ -10,6 +10,9 @@ import { useState } from "react";
 
 const MobileMenuIcon = styled(Menu)`
   cursor: pointer;
+  path {
+    stroke: ${({ theme }) => theme.mainTextColor};
+  }
   &:hover path {
     stroke: #8baa36;
   }
@@ -51,6 +54,10 @@ const CloseIcon = styled(FontAwesomeIcon)`
   width: 22px;
   height: 22px;
   cursor: pointer;
+  path {
+    transition: 1s;
+    color: ${({ theme }) => theme.mainTextColor};
+  }
 `;
 
 const FlexContainer = styled.div`
