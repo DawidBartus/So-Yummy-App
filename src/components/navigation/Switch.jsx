@@ -32,7 +32,7 @@ const Slider = styled.span`
   right: 0;
   bottom: 0;
   background-color: #fff;
-  box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.2);
   transition: 1s;
   border-radius: 50px;
   &::before {

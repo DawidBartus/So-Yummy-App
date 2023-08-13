@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { ReactComponent as Menu } from "../../utils/hamburger.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import CompanyIcon from "../../utils/CompanyIcon";
+import CompanyIcon from "../reusableComponents/CompanyIcon";
 import MainMenu from "./MainMenu";
 import Switch from "./Switch";
 import spinach from "../../utils/spinachMobile.png";

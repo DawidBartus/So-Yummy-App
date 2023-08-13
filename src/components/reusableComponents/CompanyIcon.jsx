@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { ReactComponent as Fork } from "./navigation.svg";
+import { ReactComponent as Fork } from "../../utils/navigation.svg";
 
 const Anchor = styled.a`
   &:hover {

@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import HomePicture from "../../utils/mainPagePicture.png";
-import CompanyIcon from "../../utils/CompanyIcon";
-import { RegisterButton, SignInButton } from "../../utils/Buttons";
+import CompanyIcon from "../reusableComponents/CompanyIcon";
+import { RegisterButton, SignInButton } from "../reusableComponents/Buttons";
 
 const HomeSection = styled.section`
   width: 100%;
@@ -54,7 +54,7 @@ const Home = () => {
       </HomeParagraph>
       <div>
         <RegisterButton to={"/register"}>Register</RegisterButton>
-        <SignInButton to={"/home"}>Sign in</SignInButton>
+        <SignInButton to={"/signIn"}>Sign in</SignInButton>
       </div>
     </HomeSection>
   );

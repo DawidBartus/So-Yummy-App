@@ -2,9 +2,10 @@ import styled from "styled-components";
 import SectionContainer from "../MainContainer";
 import Switch from "./Switch";
 import MainMenu from "./MainMenu";
-import CompanyIcon from "../../utils/CompanyIcon";
+import CompanyIcon from "../reusableComponents/CompanyIcon";
 import MobileMenu from "./MobileMenu";
 import { Outlet } from "react-router";
+import PageSection from "../PageSection";
 
 const NavigationElem = styled.nav`
   position: relative;
@@ -36,13 +37,6 @@ const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 50px;
-`;
-const PageSection = styled.section`
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.mainBg};
-  position: relative;
-  z-index: -1;
-  transition: 1s;
 `;
 
 const Navigation = () => {

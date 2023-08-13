@@ -12,6 +12,20 @@ const Button = styled(Link)`
   line-height: normal;
   transition: 1s;
 `;
+const FormButton = styled.button`
+  width: 100%;
+  max-width: 400px;
+  padding: 17px 0;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid ${({ theme }) => theme.standardGreen};
+  background-color: ${({ theme }) => theme.standardGreen};
+  &:hover {
+    color: ${({ theme }) => theme.standardGreen};
+    background-color: ${({ theme }) => theme.standardBlack};
+  }
+`;
 
 const RegisterButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.buttonNormal};
@@ -34,5 +48,5 @@ const SignInButton = styled(Button)`
   }
 `;
 
-export { RegisterButton, SignInButton };
+export { RegisterButton, SignInButton, FormButton };
 export default Button;
