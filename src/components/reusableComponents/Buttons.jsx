@@ -6,7 +6,6 @@ const Button = styled(Link)`
   padding: 12px 24px;
   border-radius: 24px 44px;
   cursor: pointer;
-  font-family: Poppins;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -19,6 +18,11 @@ const FormButton = styled.button`
   text-align: center;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 26px;
   border: 1px solid ${({ theme }) => theme.standardGreen};
   background-color: ${({ theme }) => theme.standardGreen};
   &:hover {
@@ -48,5 +52,15 @@ const SignInButton = styled(Button)`
   }
 `;
 
-export { RegisterButton, SignInButton, FormButton };
+const UnderFormButton = styled(Button)`
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: ${({ theme }) => theme.standardWhite};
+  text-decoration: underline;
+  background-color: ${({ theme }) => theme.standardDarkBlack};
+`;
+
+export { RegisterButton, SignInButton, FormButton, UnderFormButton };
 export default Button;

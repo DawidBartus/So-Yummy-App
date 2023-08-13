@@ -53,7 +53,7 @@ const Home = () => {
         your own recipes at any time.
       </HomeParagraph>
       <div>
-        <RegisterButton to={"/register"}>Register</RegisterButton>
+        <RegisterButton to={"/signUp"}>Register</RegisterButton>
         <SignInButton to={"/signIn"}>Sign in</SignInButton>
       </div>
     </HomeSection>

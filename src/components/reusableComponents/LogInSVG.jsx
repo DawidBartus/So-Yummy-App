@@ -2,9 +2,7 @@ import { styled, keyframes } from "styled-components";
 import { ReactComponent as MainSVG } from "../../utils/login.svg";
 import { ReactComponent as Chinese } from "../../utils/chinese.svg";
 
-const MainSvg = styled(MainSVG)`
-  position: relative;
-`;
+const MainSvg = styled(MainSVG)``;
 
 const wobble = keyframes`
   0%,
@@ -41,8 +39,8 @@ const wobble = keyframes`
 
 const ChineseFood = styled(Chinese)`
   position: absolute;
-  top: 102px;
-  left: 162px;
+  top: 60px;
+  left: 91px;
   overflow: visible;
   & path {
     animation: ${wobble} 15s linear infinite;
@@ -50,21 +48,30 @@ const ChineseFood = styled(Chinese)`
 `;
 
 const SvgContainer = styled.div`
-  scale: 0.53;
   @media (min-width: 768px) {
-    scale: 0.76;
+    scale: 1.43;
   }
   @media (min-width: 1279px) {
-    scale: 1;
+    scale: 1.86;
+  }
+`;
+const PositionContainer = styled.div`
+  position: relative;
+  transform: translateY(40px);
+
+  @media (min-width: 768px) {
+    transform: translateY(0px);
   }
 `;
 
 const LogInSVG = () => {
   return (
-    <SvgContainer>
-      <MainSvg></MainSvg>
-      <ChineseFood></ChineseFood>
-    </SvgContainer>
+    <PositionContainer>
+      <SvgContainer>
+        <MainSvg></MainSvg>
+        <ChineseFood></ChineseFood>
+      </SvgContainer>
+    </PositionContainer>
   );
 };
 

@@ -12,14 +12,16 @@ const FormContainer = styled.form`
   width: 100%;
   max-width: 500px;
   box-sizing: border-box;
+  z-index: 1;
+  position: relative;
 `;
 
 const MainInput = styled.input`
   background-color: transparent;
-  padding: 16px 40px;
+  padding: 12px 40px;
   color: ${({ theme }) => theme.standardWhite};
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -28,6 +30,9 @@ const MainInput = styled.input`
   border: 1px solid ${({ theme }) => theme.standardWhite};
   border-radius: 6px;
   position: relative;
+  @media (min-width: 768px) {
+    padding: 16px 40px;
+  }
 `;
 const NameStyledInput = styled(MainInput)`
   width: 100%;
@@ -42,13 +47,25 @@ const IconContainer = styled.span`
 const InputHolder = styled.div`
   position: relative;
 `;
+const Icon = styled(FontAwesomeIcon)`
+  width: 12px;
+  height: auto;
+  @media (min-width: 768px) {
+    width: 16px;
+    height: auto;
+  }
+  @media (min-width: 768px) {
+    width: 16px;
+    height: auto;
+  }
+`;
 
 const NameInput = () => {
   return (
     <InputHolder>
       <NameStyledInput placeholder="Name" type="text"></NameStyledInput>
       <IconContainer>
-        <FontAwesomeIcon icon={faUser} color="#FAFAFA" />
+        <Icon icon={faUser} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );
@@ -58,7 +75,7 @@ const EmailInput = () => {
     <InputHolder>
       <NameStyledInput placeholder="Email" type="email"></NameStyledInput>
       <IconContainer>
-        <FontAwesomeIcon icon={faEnvelope} color="#FAFAFA" />
+        <Icon icon={faEnvelope} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );
@@ -68,7 +85,7 @@ const PasswordInput = () => {
     <InputHolder>
       <NameStyledInput placeholder="Password" type="password"></NameStyledInput>
       <IconContainer>
-        <FontAwesomeIcon icon={faLock} color="#FAFAFA" />
+        <Icon icon={faLock} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );

@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import lightTheme, { darkTheme } from "./Theme";
 import MainPage from "./pages/MainPage";
 import NotFound from "./components/NotFound/NotFound";
+import RegisterForm from "./pages/RegisterPage";
 import LogInPage from "./pages/LogInPage";
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/signUp" element={<RegisterForm />} />
         <Route path="/signIn" element={<LogInPage />} />
-        {/*     <Route path="/register" element={<RegisterPage />} /> */}
         <Route path="/home" element={<Navigation />}>
           <Route path="*" element={<NotFound />}></Route>
         </Route>
