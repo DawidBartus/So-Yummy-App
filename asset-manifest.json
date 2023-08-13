@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/so-yummy-app/static/css/main.5a295ff8.css",
-    "main.js": "/so-yummy-app/static/js/main.fc1a3821.js",
+    "main.js": "/so-yummy-app/static/js/main.ae9e7042.js",
     "static/js/787.10cc4de4.chunk.js": "/so-yummy-app/static/js/787.10cc4de4.chunk.js",
     "static/media/mainPagePicture.png": "/so-yummy-app/static/media/mainPagePicture.5dff1721a2653e1d34d0.png",
-    "static/media/login.svg": "/so-yummy-app/static/media/login.051c105152de98d2341dddd0f5a847c5.svg",
+    "static/media/login.svg": "/so-yummy-app/static/media/login.109c959388e30116c224b2a2a5466367.svg",
     "static/media/spinachMobile.png": "/so-yummy-app/static/media/spinachMobile.4d437f3f129bb5d4b8f4.png",
     "static/media/people.svg": "/so-yummy-app/static/media/people.c3758c683487c832ed44690ff4f2fb06.svg",
-    "static/media/chinese.svg": "/so-yummy-app/static/media/chinese.a3ffc04ce794b18ea58d8dde08076226.svg",
+    "static/media/chinese.svg": "/so-yummy-app/static/media/chinese.521eb513cf64cd9a46cc7730194ed8a6.svg",
     "static/media/navigation.svg": "/so-yummy-app/static/media/navigation.96d4835c98cc2c8e9e3b7fba81920650.svg",
     "index.html": "/so-yummy-app/index.html",
     "static/media/searchIcon.svg": "/so-yummy-app/static/media/searchIcon.d28ae7618c62d6887f66b5e7cba3adde.svg",
     "static/media/hamburger.svg": "/so-yummy-app/static/media/hamburger.8bc83084eae8d84c41d80e5e8f02ae9b.svg",
     "main.5a295ff8.css.map": "/so-yummy-app/static/css/main.5a295ff8.css.map",
-    "main.fc1a3821.js.map": "/so-yummy-app/static/js/main.fc1a3821.js.map",
+    "main.ae9e7042.js.map": "/so-yummy-app/static/js/main.ae9e7042.js.map",
     "787.10cc4de4.chunk.js.map": "/so-yummy-app/static/js/787.10cc4de4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5a295ff8.css",
-    "static/js/main.fc1a3821.js"
+    "static/js/main.ae9e7042.js"
   ]
 }
