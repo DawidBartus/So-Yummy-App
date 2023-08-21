@@ -60,30 +60,45 @@ const Icon = styled(FontAwesomeIcon)`
   }
 `;
 
-const NameInput = () => {
+const NameInput = ({ setInputName }) => {
   return (
     <InputHolder>
-      <NameStyledInput placeholder="Name" type="text"></NameStyledInput>
+      <NameStyledInput
+        placeholder="Name"
+        id="name"
+        type="text"
+        onChange={setInputName}
+      ></NameStyledInput>
       <IconContainer>
         <Icon icon={faUser} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );
 };
-const EmailInput = () => {
+const EmailInput = ({ setInputEmail }) => {
   return (
     <InputHolder>
-      <NameStyledInput placeholder="Email" type="email"></NameStyledInput>
+      <NameStyledInput
+        placeholder="Email"
+        id="email"
+        type="email"
+        onChange={setInputEmail}
+      ></NameStyledInput>
       <IconContainer>
         <Icon icon={faEnvelope} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );
 };
-const PasswordInput = () => {
+const PasswordInput = ({ setInputPassword }) => {
   return (
     <InputHolder>
-      <NameStyledInput placeholder="Password" type="password"></NameStyledInput>
+      <NameStyledInput
+        placeholder="Password"
+        id="password"
+        type="password"
+        onChange={setInputPassword}
+      ></NameStyledInput>
       <IconContainer>
         <Icon icon={faLock} color="#FAFAFA" />
       </IconContainer>
