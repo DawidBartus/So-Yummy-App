@@ -13,25 +13,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+
+    setFormValues((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     // In this stage of project i skip verification
     // Check user credentials
-    if (name && email && password) {
+    if (formValues.name && formValues.email && formValues.password) {
       navigate("/home");
     }
   };
@@ -41,9 +42,9 @@ const RegisterForm = () => {
       <LogInSVG />
       <FormContainer onSubmit={handleSubmit}>
         <FormHeader>Registration</FormHeader>
-        <NameInput setInputName={handleNameChange} />
-        <EmailInput setInputEmail={handleEmailChange} />
-        <PasswordInput setInputPassword={handlePasswordChange} />
+        <NameInput setInputName={handleInputChange} />
+        <EmailInput setInputEmail={handleInputChange} />
+        <PasswordInput setInputPassword={handleInputChange} />
         <FormButton type="submit">Sign up</FormButton>
         <UnderFormButton to={"/signIn"}>Sign in</UnderFormButton>
       </FormContainer>

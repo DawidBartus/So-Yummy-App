@@ -12,22 +12,29 @@ import SpecialBgComponent from "../reusableComponents/SpecialBackground";
 import { useNavigate } from "react-router";
 
 const LogInForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [error, setError] = useState({});
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+
+    setFormValues((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
   };
 
   const handleSignIn = (e) => {
     e.preventDefault();
     // In this stage of project i skip verification
     // Check user credentials
-    if (email && password) {
+
+    if (formValues.email && formValues.password) {
       navigate("/home");
     }
   };
@@ -37,8 +44,8 @@ const LogInForm = () => {
       <LogInSVG />
       <FormContainer onSubmit={handleSignIn}>
         <FormHeader>Sign in</FormHeader>
-        <EmailInput setInputEmail={handleEmailChange} />
-        <PasswordInput setInputPassword={handlePasswordChange} />
+        <EmailInput setInputEmail={handleInputChange} />
+        <PasswordInput setInputPassword={handleInputChange} />
         <FormButton>Sign in</FormButton>
         <UnderFormButton to={"/signUp"}>Register</UnderFormButton>
       </FormContainer>
