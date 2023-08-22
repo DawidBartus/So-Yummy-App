@@ -12,6 +12,7 @@ const NotFoundSection = styled.section`
   padding: 0 35px;
   box-sizing: border-box;
   color: ${({ theme }) => theme.mainTextColor};
+  background-color: ${({ theme }) => theme.mainBg};
 `;
 const Header = styled.h1`
   color: ${({ theme }) => theme.mainTextColor};

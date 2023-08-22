@@ -6,6 +6,8 @@ import CompanyIcon from "../reusableComponents/CompanyIcon";
 import MobileMenu from "./MobileMenu";
 import { Outlet } from "react-router";
 import PageSection from "../PageSection";
+import { useState } from "react";
+import LogOut from "../LogOut/LogOut";
 
 const NavigationElem = styled.nav`
   position: relative;
@@ -17,7 +19,8 @@ const NavigationElem = styled.nav`
   max-width: 1500px;
 `;
 
-const AvatarAnchor = styled.a`
+const AvatarAnchor = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   transition: 1s;
@@ -34,12 +37,19 @@ const Avatar = styled.div`
   background-color: rebeccapurple;
 `;
 const FlexContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 50px;
 `;
 
 const Navigation = () => {
+  const [clicked, setClicked] = useState(false);
+
+  const displayLogOut = () => {
+    setClicked((prev) => !prev);
+  };
+
   return (
     <>
       <SectionContainer>
@@ -47,12 +57,13 @@ const Navigation = () => {
           <CompanyIcon />
           <MainMenu />
           <FlexContainer style={{ gap: "50px" }}>
-            <AvatarAnchor href="#">
+            <AvatarAnchor onClick={displayLogOut}>
               <Avatar />
               Name
             </AvatarAnchor>
             <Switch />
             <MobileMenu />
+            <LogOut visible={clicked} />
           </FlexContainer>
         </NavigationElem>
       </SectionContainer>

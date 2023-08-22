@@ -1,7 +1,10 @@
 import { styled } from "styled-components";
 import HomePicture from "../../utils/mainPagePicture.png";
 import CompanyIcon from "../reusableComponents/CompanyIcon";
-import { RegisterButton, SignInButton } from "../reusableComponents/Buttons";
+import {
+  GreenToBlackBtn,
+  TransparentToBlackBtn,
+} from "../reusableComponents/Buttons";
 
 const HomeSection = styled.section`
   width: 100%;
@@ -53,8 +56,8 @@ const Home = () => {
         your own recipes at any time.
       </HomeParagraph>
       <div>
-        <RegisterButton to={"/signUp"}>Register</RegisterButton>
-        <SignInButton to={"/signIn"}>Sign in</SignInButton>
+        <GreenToBlackBtn to={"/signUp"}>Register</GreenToBlackBtn>
+        <TransparentToBlackBtn to={"/signIn"}>Sign in</TransparentToBlackBtn>
       </div>
     </HomeSection>
   );
