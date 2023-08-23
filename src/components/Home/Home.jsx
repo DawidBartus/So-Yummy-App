@@ -55,7 +55,7 @@ const Home = () => {
         to be your very own digital cookbook. You can easily save and retrieve
         your own recipes at any time.
       </HomeParagraph>
-      <div>
+      <div style={{ display: "flex", gap: "18px" }}>
         <GreenToBlackBtn to={"/signUp"}>Register</GreenToBlackBtn>
         <TransparentToBlackBtn to={"/signIn"}>Sign in</TransparentToBlackBtn>
       </div>

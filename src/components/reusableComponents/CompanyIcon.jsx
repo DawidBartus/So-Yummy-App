@@ -1,11 +1,6 @@
 import { styled } from "styled-components";
 import { ReactComponent as Fork } from "../../utils/navigation.svg";
-
-const Anchor = styled.a`
-  &:hover {
-    color: #8baa36;
-  }
-`;
+import { StyledLink } from "./Buttons";
 
 const SvgFork = styled.div`
   width: 44px;
@@ -19,11 +14,11 @@ const SvgFork = styled.div`
 
 const CompanyIcon = ({ close }) => {
   return (
-    <Anchor href="#" onClick={close}>
+    <StyledLink to="/home/Dev" onClick={close}>
       <SvgFork>
         <Fork />
       </SvgFork>
-    </Anchor>
+    </StyledLink>
   );
 };
 export default CompanyIcon;

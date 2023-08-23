@@ -8,6 +8,7 @@ import { Outlet } from "react-router";
 import PageSection from "../PageSection";
 import { useState } from "react";
 import LogOut from "../LogOut/LogOut";
+import Footer from "../Footer/Footer";
 
 const NavigationElem = styled.nav`
   position: relative;
@@ -70,6 +71,7 @@ const Navigation = () => {
       <PageSection>
         <Outlet />
       </PageSection>
+      <Footer />
     </>
   );
 };

@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 const PageSection = styled.section`
   min-height: 100vh;
   background-color: ${({ theme }) => theme.mainBg};
-  position: relative;
-  z-index: -1;
+  /* position: relative;
+  z-index: -1; */
   transition: 1s;
 `;
 
@@ -27,5 +27,12 @@ const SignInUpSection = styled(PageSection)`
   }
 `;
 
-export { SignInUpSection };
+const GreenSection = styled.section`
+  background-color: ${({ theme }) => theme.darkToGreen};
+  width: 100%;
+  padding-top: 28px;
+  padding-bottom: 18px;
+`;
+
+export { SignInUpSection, GreenSection };
 export default PageSection;

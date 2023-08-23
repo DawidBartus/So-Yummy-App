@@ -8,6 +8,7 @@ import MainPage from "./pages/MainPage";
 import NotFound from "./components/NotFound/NotFound";
 import RegisterForm from "./pages/RegisterPage";
 import LogInPage from "./pages/LogInPage";
+import DevComponents from "./pages/DevComponents";
 
 function App() {
   const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signUp" element={<RegisterForm />} />
         <Route path="/signIn" element={<LogInPage />} />
         <Route path="/home" element={<Navigation />}>
+          <Route path="/home/Dev" element={<DevComponents />} />
           <Route path="*" element={<NotFound />}></Route>
         </Route>
         <Route path="*" element={<NotFound />}></Route>

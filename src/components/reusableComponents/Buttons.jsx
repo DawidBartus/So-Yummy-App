@@ -8,7 +8,7 @@ const Button = styled(Link)`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  transition: 1s;
+  transition: 500ms;
   padding: 12px 24px;
 `;
 const RoundedLinkBtn = styled(Button)`
@@ -20,6 +20,10 @@ const RoundedLinkBtn = styled(Button)`
 const StyledLink = styled(Button)`
   padding: 0px;
   color: ${({ theme }) => theme.mainTextColor};
+  border-bottom: 1px solid transparent;
+  &:hover {
+    border-bottom: 1px solid ${({ theme }) => theme.standardGreen};
+  }
 `;
 
 const GreenToBlackBtn = styled(RoundedLinkBtn)`
@@ -33,7 +37,6 @@ const GreenToBlackBtn = styled(RoundedLinkBtn)`
 `;
 
 const TransparentToBlackBtn = styled(RoundedLinkBtn)`
-  margin-left: 18px;
   border: 1px solid ${({ theme }) => theme.standardWhite};
   background-color: transparent;
   color: ${({ theme }) => theme.standardWhite};
@@ -59,10 +62,8 @@ const AllGreenBtn = styled(RoundedLinkBtn)`
 `;
 
 // styled button
-const FormButton = styled.button`
-  transition: 1s;
-  width: 100%;
-  max-width: 400px;
+const basisBtn = styled.button`
+  transition: 500ms;
   padding: 17px 0;
   text-align: center;
   border-radius: 6px;
@@ -71,7 +72,11 @@ const FormButton = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  margin-top: 26px;
+`;
+
+const FormButton = styled(basisBtn)`
+  width: 100%;
+  max-width: 400px;
   border: 1px solid ${({ theme }) => theme.standardGreen};
   background-color: ${({ theme }) => theme.standardGreen};
   &:hover {
@@ -79,11 +84,34 @@ const FormButton = styled.button`
     background-color: ${({ theme }) => theme.standardBlack};
   }
 `;
-const RoundedBtn = styled(FormButton)`
+const MirrorFormButton = styled(basisBtn)`
+  width: 100%;
+  max-width: 400px;
+  color: ${({ theme }) => theme.standardWhite};
+  background-color: ${({ theme }) => theme.standardBlack};
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.standardGreen};
+    background-color: ${({ theme }) => theme.standardGreen};
+  }
+`;
+
+const RoundedBtn = styled(basisBtn)`
+  cursor: pointer;
+  transition: 500ms;
   padding: 12px 32px;
   border-radius: 24px 44px;
   &:hover {
     border-radius: 44px 24px;
+  }
+`;
+
+const RoundedGreenToDark = styled(RoundedBtn)`
+  background-color: ${({ theme }) => theme.standardGreen};
+  border: 1px solid ${({ theme }) => theme.standardGreen};
+  &:hover {
+    background-color: ${({ theme }) => theme.standardBlack};
+    color: ${({ theme }) => theme.standardWhite};
   }
 `;
 
@@ -94,5 +122,9 @@ export {
   UnderFormButton,
   AllGreenBtn,
   StyledLink,
+  RoundedBtn,
+  RoundedLinkBtn,
+  RoundedGreenToDark,
+  MirrorFormButton,
 };
 export default Button;
