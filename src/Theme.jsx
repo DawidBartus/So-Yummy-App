@@ -8,37 +8,47 @@ let thTransWhite = "#fafafa30";
 let thGreen = "#EBF3D4";
 let thDarkGreen = "#8BAA36";
 let thNavy = "#001833";
+// Small - 14px
+// Medium - 16px
+// Big - 18px
 
-const standardColors = {
+const standard = {
   standardFormBlack: thFormBlack,
   standardWhite: thWhite,
   standardGreen: thDarkGreen,
+  standardLightGreen: thGreen,
   standardBlack: thBttnBlack,
   standardDarkBlack: thBlack,
+  smallFS: "14px",
+  mediumFS: "16px",
+  bigFS: "18px",
 };
 
+// text white -> black
+// button green -> black
+// button black -> green
+
 const darkTheme = {
-  ...standardColors,
+  ...standard,
   mainBg: thBlack,
   mobileBg: thBlack,
   mainTextColor: thWhite,
-  buttonNormal: thDarkGreen,
+  blackToGreen: thDarkGreen,
   buttonHover: thBttnBlack,
   headers: thWhite,
   transparentBg: thTransWhite,
   darkToGreen: thDarkGreen,
 };
 const lightTheme = {
-  ...standardColors,
-  mainBg: thWhite,
+  ...standard,
+  mainBg: thWhite, // background white -> black
   mobileBg: thGreen,
-  mainTextColor: textBlack,
-  buttonNormal: thBttnBlack,
+  mainTextColor: textBlack, // text black -> white
+  blackToGreen: thBttnBlack, //black to dark greens
   buttonHover: thDarkGreen,
-  headers: thNavy,
-  transparentBg: thTransBlack,
-
-  darkToGreen: thBttnBlack,
+  headers: thNavy, // headers navy -> white
+  transparentBg: thTransBlack, //modal transparent black - > white
+  darkToGreen: thBttnBlack, //background black -> green
 };
 export { darkTheme };
 export default lightTheme;

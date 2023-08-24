@@ -1,30 +1,49 @@
-import { styled } from "styled-components";
 import FlexContainer from "../FlexContainer";
-import { GreenSection } from "../PageSection";
-import { MirrorFormButton, StyledLink } from "../reusableComponents/Buttons";
+import { MirrorFormButton } from "../reusableComponents/Buttons";
 import { EmailInput } from "../reusableComponents/Inputs";
-
-const WhiteLink = styled(StyledLink)`
-  color: ${({ theme }) => theme.standardWhite};
-`;
+import { CompanyV2Icon } from "../reusableComponents/CompanyIcon";
+import { SubsectionHeader } from "../reusableComponents/Headers";
+import FooterSection, {
+  FormContainer,
+  FooterList,
+  LinkContainer,
+  ColumnWrapper,
+  FooterFlexWrapper,
+  WhiteLink,
+  NewsletterSection,
+} from "./FooterComponents";
 
 const Footer = () => {
   return (
-    <GreenSection>
-      <FlexContainer style={{ flexDirection: "column", gap: 10 }}>
-        <WhiteLink>Ingredients</WhiteLink>
-        <WhiteLink>Add recipes</WhiteLink>
-        <WhiteLink>My recipes</WhiteLink>
-        <WhiteLink>Favorite</WhiteLink>
-        <WhiteLink>Shopping list</WhiteLink>
-      </FlexContainer>
-      <form action="" style={{ padding: "32px 80px" }}>
-        <EmailInput></EmailInput>
-        <MirrorFormButton style={{ marginTop: "20px" }}>
-          Subscribe
-        </MirrorFormButton>
-      </form>
-    </GreenSection>
+    <FooterSection>
+      <FooterFlexWrapper>
+        <ColumnWrapper>
+          <FlexContainer style={{ gap: "12px", alignItems: "center" }}>
+            <CompanyV2Icon />
+            <SubsectionHeader>So Yummy</SubsectionHeader>
+          </FlexContainer>
+          <FooterList>
+            <li>Database of recipes that can be replenished </li>
+            <li>Flexible search for desired and unwanted ingredients</li>
+            <li>Ability to add your own recipes with photos</li>
+            <li>Convenient and easy to use</li>
+          </FooterList>
+        </ColumnWrapper>
+        <LinkContainer>
+          <WhiteLink>Ingredients</WhiteLink>
+          <WhiteLink>Add recipes</WhiteLink>
+          <WhiteLink>My recipes</WhiteLink>
+          <WhiteLink>Favorite</WhiteLink>
+          <WhiteLink>Shopping list</WhiteLink>
+        </LinkContainer>
+        <FormContainer>
+          <NewsletterSection action="">
+            <EmailInput placeholder={"Enter your email address"} />
+            <MirrorFormButton>Subscribe</MirrorFormButton>
+          </NewsletterSection>
+        </FormContainer>
+      </FooterFlexWrapper>
+    </FooterSection>
   );
 };
 

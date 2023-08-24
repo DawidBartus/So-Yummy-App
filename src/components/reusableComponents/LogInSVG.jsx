@@ -58,6 +58,7 @@ const SvgContainer = styled.div`
 const PositionContainer = styled.div`
   position: relative;
   transform: translateY(40px);
+  margin-top: 20px;
 
   @media (min-width: 768px) {
     transform: translateY(0px);

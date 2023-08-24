@@ -1,5 +1,5 @@
 import LogInSVG from "../reusableComponents/LogInSVG";
-import { SignInUpSection } from "../PageSection";
+import { SignInUpSection } from "../reusableComponents/Sections";
 import {
   EmailInput,
   FormContainer,

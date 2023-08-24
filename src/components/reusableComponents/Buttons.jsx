@@ -27,7 +27,7 @@ const StyledLink = styled(Button)`
 `;
 
 const GreenToBlackBtn = styled(RoundedLinkBtn)`
-  border: 1px solid ${({ theme }) => theme.buttonNormal};
+  border: 1px solid ${({ theme }) => theme.blackToGreen};
   background-color: ${({ theme }) => theme.standardGreen};
   &:hover {
     border: 1px solid ${({ theme }) => theme.standardGreen};

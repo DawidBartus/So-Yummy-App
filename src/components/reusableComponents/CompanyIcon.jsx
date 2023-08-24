@@ -12,13 +12,28 @@ const SvgFork = styled.div`
   justify-content: center;
 `;
 
+const SVGLigthFork = styled(SvgFork)`
+  background-color: ${({ theme }) => theme.standardLightGreen};
+`;
+
 const CompanyIcon = ({ close }) => {
   return (
     <StyledLink to="/home/Dev" onClick={close}>
       <SvgFork>
-        <Fork />
+        <Fork style={{ stroke: "#fff" }} />
       </SvgFork>
     </StyledLink>
   );
 };
+
+const CompanyV2Icon = () => {
+  return (
+    <StyledLink to="/home/Dev">
+      <SVGLigthFork>
+        <Fork style={{ stroke: "#8BAA36" }} />
+      </SVGLigthFork>
+    </StyledLink>
+  );
+};
+export { CompanyV2Icon };
 export default CompanyIcon;

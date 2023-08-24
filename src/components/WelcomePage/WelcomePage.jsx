@@ -6,7 +6,7 @@ import {
   TransparentToBlackBtn,
 } from "../reusableComponents/Buttons";
 
-const HomeSection = styled.section`
+const WelcomePageSection = styled.section`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -34,7 +34,7 @@ const Header = styled.h1`
   letter-spacing: -0.48px;
   margin: 28px 0 14px 0;
 `;
-const HomeParagraph = styled.p`
+const WelcomeParagraph = styled.p`
   width: 100%;
   max-width: 500px;
   font-size: 14px;
@@ -45,22 +45,22 @@ const HomeParagraph = styled.p`
   margin-bottom: 44px;
 `;
 
-const Home = () => {
+const WelcomePage = () => {
   return (
-    <HomeSection>
+    <WelcomePageSection>
       <CompanyIcon />
       <Header>Welcome to the app!</Header>
-      <HomeParagraph>
+      <WelcomeParagraph>
         This app offers more than just a collection of recipes - it is designed
         to be your very own digital cookbook. You can easily save and retrieve
         your own recipes at any time.
-      </HomeParagraph>
+      </WelcomeParagraph>
       <div style={{ display: "flex", gap: "18px" }}>
         <GreenToBlackBtn to={"/signUp"}>Register</GreenToBlackBtn>
         <TransparentToBlackBtn to={"/signIn"}>Sign in</TransparentToBlackBtn>
       </div>
-    </HomeSection>
+    </WelcomePageSection>
   );
 };
 
-export default Home;
+export default WelcomePage;

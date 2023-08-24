@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SignInUpSection } from "../PageSection";
+import { SignInUpSection } from "../reusableComponents/Sections";
 import { FormButton, UnderFormButton } from "../reusableComponents/Buttons";
 import FormHeader from "../reusableComponents/Headers";
 import {
@@ -12,7 +12,7 @@ import SpecialBgComponent from "../reusableComponents/SpecialBackground";
 import { useNavigate } from "react-router";
 
 const LogInForm = () => {
-  const [error, setError] = useState({});
+  // const [error, setError] = useState({});
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",

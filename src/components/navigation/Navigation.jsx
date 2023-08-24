@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import SectionContainer from "../MainContainer";
 import Switch from "./Switch";
 import MainMenu from "./MainMenu";
 import CompanyIcon from "../reusableComponents/CompanyIcon";
 import MobileMenu from "./MobileMenu";
-import { Outlet } from "react-router";
-import PageSection from "../PageSection";
 import { useState } from "react";
 import LogOut from "../LogOut/LogOut";
-import Footer from "../Footer/Footer";
+import { HeaderSection } from "../reusableComponents/Sections";
 
 const NavigationElem = styled.nav`
   position: relative;
@@ -17,7 +14,7 @@ const NavigationElem = styled.nav`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1440px;
 `;
 
 const AvatarAnchor = styled.div`
@@ -52,27 +49,21 @@ const Navigation = () => {
   };
 
   return (
-    <>
-      <SectionContainer>
-        <NavigationElem>
-          <CompanyIcon />
-          <MainMenu />
-          <FlexContainer style={{ gap: "50px" }}>
-            <AvatarAnchor onClick={displayLogOut}>
-              <Avatar />
-              Name
-            </AvatarAnchor>
-            <Switch />
-            <MobileMenu />
-            <LogOut visible={clicked} />
-          </FlexContainer>
-        </NavigationElem>
-      </SectionContainer>
-      <PageSection>
-        <Outlet />
-      </PageSection>
-      <Footer />
-    </>
+    <HeaderSection>
+      <NavigationElem>
+        <CompanyIcon />
+        <MainMenu />
+        <FlexContainer style={{ gap: "50px" }}>
+          <AvatarAnchor onClick={displayLogOut}>
+            <Avatar />
+            Name
+          </AvatarAnchor>
+          <Switch />
+          <MobileMenu />
+          <LogOut visible={clicked} />
+        </FlexContainer>
+      </NavigationElem>
+    </HeaderSection>
   );
 };
 

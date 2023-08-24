@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { styled } from "styled-components";
 
 const FormContainer = styled.form`
-  background-color: ${({ theme }) => theme.standardFormBlack};
   display: flex;
   flex-direction: column;
   padding: 44px 50px;
@@ -14,42 +13,52 @@ const FormContainer = styled.form`
   box-sizing: border-box;
   z-index: 1;
   position: relative;
+  margin-bottom: 20px;
+  background-color: ${({ theme }) => theme.standardFormBlack};
 `;
 
 const MainInput = styled.input`
   background-color: transparent;
-  padding: 12px 40px;
-  color: ${({ theme }) => theme.standardWhite};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.36px;
-  cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.standardWhite};
+  padding: 12px 40px;
   border-radius: 6px;
   position: relative;
+  cursor: pointer;
+  border: 1px solid ${({ theme }) => theme.standardWhite};
+  color: ${({ theme }) => theme.standardWhite};
   @media (min-width: 768px) {
     padding: 16px 40px;
   }
+  &::placeholder {
+    color: ${({ theme }) => theme.standardWhite};
+  }
 `;
-const NameStyledInput = styled(MainInput)`
+
+const StyledInput = styled(MainInput)`
   width: 100%;
   box-sizing: border-box;
 `;
+
 const IconContainer = styled.span`
   position: absolute;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
 `;
+
 const InputHolder = styled.div`
   position: relative;
 `;
+
 const Icon = styled(FontAwesomeIcon)`
   width: 12px;
   height: auto;
+
   @media (min-width: 768px) {
     width: 16px;
     height: auto;
@@ -63,27 +72,27 @@ const Icon = styled(FontAwesomeIcon)`
 const NameInput = ({ setInputName }) => {
   return (
     <InputHolder>
-      <NameStyledInput
+      <StyledInput
         placeholder="Name"
         id="name"
         type="text"
         onChange={setInputName}
-      ></NameStyledInput>
+      ></StyledInput>
       <IconContainer>
         <Icon icon={faUser} color="#FAFAFA" />
       </IconContainer>
     </InputHolder>
   );
 };
-const EmailInput = ({ setInputEmail }) => {
+const EmailInput = ({ setInputEmail, placeholder = "Email" }) => {
   return (
     <InputHolder>
-      <NameStyledInput
-        placeholder="Email"
+      <StyledInput
+        placeholder={placeholder}
         id="email"
         type="email"
         onChange={setInputEmail}
-      ></NameStyledInput>
+      ></StyledInput>
       <IconContainer>
         <Icon icon={faEnvelope} color="#FAFAFA" />
       </IconContainer>
@@ -93,12 +102,12 @@ const EmailInput = ({ setInputEmail }) => {
 const PasswordInput = ({ setInputPassword }) => {
   return (
     <InputHolder>
-      <NameStyledInput
+      <StyledInput
         placeholder="Password"
         id="password"
         type="password"
         onChange={setInputPassword}
-      ></NameStyledInput>
+      ></StyledInput>
       <IconContainer>
         <Icon icon={faLock} color="#FAFAFA" />
       </IconContainer>
