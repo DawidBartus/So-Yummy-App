@@ -5,7 +5,6 @@ import { togglePageMode } from "../../redux/pageModeSlice";
 const SwitchLabel = styled.label`
   display: none;
   position: relative;
-
   width: 61px;
   height: 27px;
   @media (min-width: 1279px) {

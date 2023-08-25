@@ -88,7 +88,7 @@ const mobileCss = {
 };
 
 const switchON = {
-  margin: "18px 16px",
+  margin: "18px 16px 40px",
   display: "inline-block",
   "@media (maxWidth: 1279px)": {
     display: "inline-block",

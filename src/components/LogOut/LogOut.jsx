@@ -22,6 +22,7 @@ const LogOutContainer = styled.div`
   gap: 32px;
   padding: 18px;
   border-radius: 8px;
+  z-index: 2;
   background-color: ${({ theme }) => theme.mainBg};
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   pointer-events: ${({ $visible }) => ($visible ? "auto" : "none")};
@@ -35,10 +36,11 @@ const LogOutSection = styled.section`
   left: 0;
   width: 100%;
   height: 100vh;
+  transition: 500ms;
+  z-index: 999;
   opacity: ${({ $logOut }) => ($logOut ? 1 : 0)};
   pointer-events: ${({ $logOut }) => ($logOut ? "auto" : "none")};
   background-color: ${({ theme }) => theme.transparentBg};
-  transition: 400ms;
 `;
 
 const LogOutModal = ({ toggleModal, logOut, logOutFunc }) => {

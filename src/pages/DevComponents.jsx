@@ -1,27 +1,28 @@
-import Footer from "../components/Footer/Footer";
-import Button, {
-  AllGreenBtn,
-  FormButton,
-  GreenToBlackBtn,
-  MirrorFormButton,
-  RoundedBtn,
-  RoundedLinkBtn,
-  StyledLink,
-  TransparentToBlackBtn,
-} from "../components/reusableComponents/Buttons";
-import FormHeader from "../components/reusableComponents/Headers";
-import {
-  EmailInput,
-  FormContainer,
-  NameInput,
-  PasswordInput,
-} from "../components/reusableComponents/Inputs";
-import TextParagraph from "../components/reusableComponents/Text";
+// import Footer from "../components/Footer/Footer";
+import Post from "../components/Post/Post";
+// import Button, {
+//   AllGreenBtn,
+//   FormButton,
+//   GreenToBlackBtn,
+//   MirrorFormButton,
+//   RoundedBtn,
+//   RoundedLinkBtn,
+//   StyledLink,
+//   TransparentToBlackBtn,
+// } from "../components/reusableComponents/Buttons";
+// import FormHeader from "../components/reusableComponents/Headers";
+// import {
+//   EmailInput,
+//   FormContainer,
+//   NameInput,
+//   PasswordInput,
+// } from "../components/reusableComponents/Inputs";
+// import TextParagraph from "../components/reusableComponents/Text";
 
 const DevComponents = () => {
   return (
     <section>
-      <Button>Button</Button>
+      {/* <Button>Button</Button>
       <RoundedLinkBtn>RoundedLinkBtn</RoundedLinkBtn>
       <StyledLink>StyledLink</StyledLink>
       <GreenToBlackBtn>GreenToBlackBtn</GreenToBlackBtn>
@@ -40,7 +41,8 @@ const DevComponents = () => {
         <PasswordInput></PasswordInput>
       </FormContainer>
 
-      <Footer></Footer>
+      <Footer></Footer> */}
+      <Post></Post>
     </section>
   );
 };
