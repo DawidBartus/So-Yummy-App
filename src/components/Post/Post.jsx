@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import PretendApiFetch from "./PostApiFetch";
+// import PretendApiFetch from "./PostApiFetch";
 
 const PostContainer = styled.div`
   position: relative;
@@ -35,11 +35,16 @@ const PostParagraph = styled.p`
 `;
 
 const Post = ({ props }) => {
+  let { recipe } = props;
+  console.log(recipe);
   return (
-    <PostContainer key={props.alt}>
-      <PostBackground $url={props.src} />
-      <PostParagraph>{props.alt}</PostParagraph>
-    </PostContainer>
+    <>
+      <PostContainer key={recipe.label}>
+        <PostBackground $url={recipe.image} />
+        <PostParagraph>{recipe.label}</PostParagraph>
+      </PostContainer>
+      {/* <FoodModal /> */}
+    </>
   );
 };
 

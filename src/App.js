@@ -12,10 +12,10 @@ import HomePage from "./pages/HomePage";
 import apiFetch from "./Services/ApiFetch";
 import StartPage from "./components/StartPage/StartPage";
 
+const startFetch = await apiFetch("breakfast");
+
 function App() {
   const isDarkMode = useSelector((state) => state.pageMode.pageMode);
-
-  const startFetch = apiFetch();
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
