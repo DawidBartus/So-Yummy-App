@@ -34,18 +34,12 @@ const PostParagraph = styled.p`
   border-radius: 8px;
 `;
 
-const Post = () => {
-  const photos = PretendApiFetch();
-
+const Post = ({ props }) => {
   return (
-    <>
-      {photos.map((elem) => (
-        <PostContainer key={elem.alt}>
-          <PostBackground $url={elem.src} />
-          <PostParagraph>{elem.alt}</PostParagraph>
-        </PostContainer>
-      ))}
-    </>
+    <PostContainer key={props.alt}>
+      <PostBackground $url={props.src} />
+      <PostParagraph>{props.alt}</PostParagraph>
+    </PostContainer>
   );
 };
 
