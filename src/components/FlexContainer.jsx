@@ -1,7 +1,7 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 const FlexContainer = styled.div`
-  display: flex;
+    display: flex;
 `;
 
 export default FlexContainer;

@@ -1,5 +1,5 @@
 // import Footer from "../components/Footer/Footer";
-import Post from "../components/Post/Post";
+import Post from '../components/Post/Post';
 // import Button, {
 //   AllGreenBtn,
 //   FormButton,
@@ -20,9 +20,9 @@ import Post from "../components/Post/Post";
 // import TextParagraph from "../components/reusableComponents/Text";
 
 const DevComponents = () => {
-  return (
-    <section>
-      {/* <Button>Button</Button>
+    return (
+        <section>
+            {/* <Button>Button</Button>
       <RoundedLinkBtn>RoundedLinkBtn</RoundedLinkBtn>
       <StyledLink>StyledLink</StyledLink>
       <GreenToBlackBtn>GreenToBlackBtn</GreenToBlackBtn>
@@ -42,9 +42,9 @@ const DevComponents = () => {
       </FormContainer>
 
       <Footer></Footer> */}
-      <Post></Post>
-    </section>
-  );
+            <Post></Post>
+        </section>
+    );
 };
 
 export default DevComponents;

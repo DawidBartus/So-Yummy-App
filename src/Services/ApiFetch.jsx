@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // const photos = [
 //   {
@@ -10,15 +10,15 @@ import axios from "axios";
 //     alt: "Ham hock colcannon",
 //   },
 // ];
-const baseKey = "36c3ac425b9892779965b003d89cde16";
-const apiId = "80ef1424";
+const baseKey = '36c3ac425b9892779965b003d89cde16';
+const apiId = '80ef1424';
 
 const apiFetch = async (query) => {
-  let results = await axios(
-    `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${apiId}&app_key=${baseKey}`
-  ).then((res) => res.data);
+    let results = await axios(
+        `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${apiId}&app_key=${baseKey}`
+    ).then((res) => res.data);
 
-  return results.hits.slice(0, 4);
+    return results.hits.slice(0, 4);
 };
 
 export default apiFetch;

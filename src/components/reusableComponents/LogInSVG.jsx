@@ -1,6 +1,6 @@
-import { styled, keyframes } from "styled-components";
-import { ReactComponent as MainSVG } from "../../utils/login.svg";
-import { ReactComponent as Chinese } from "../../utils/chinese.svg";
+import { styled, keyframes } from 'styled-components';
+import { ReactComponent as MainSVG } from '../../utils/login.svg';
+import { ReactComponent as Chinese } from '../../utils/chinese.svg';
 
 const MainSvg = styled(MainSVG)``;
 
@@ -38,42 +38,42 @@ const wobble = keyframes`
 `;
 
 const ChineseFood = styled(Chinese)`
-  position: absolute;
-  top: 60px;
-  left: 91px;
-  overflow: visible;
-  & path {
-    animation: ${wobble} 15s linear infinite;
-  }
+    position: absolute;
+    top: 60px;
+    left: 91px;
+    overflow: visible;
+    & path {
+        animation: ${wobble} 15s linear infinite;
+    }
 `;
 
 const SvgContainer = styled.div`
-  @media (min-width: 768px) {
-    scale: 1.43;
-  }
-  @media (min-width: 1279px) {
-    scale: 1.86;
-  }
+    @media (min-width: 768px) {
+        scale: 1.43;
+    }
+    @media (min-width: 1279px) {
+        scale: 1.86;
+    }
 `;
 const PositionContainer = styled.div`
-  position: relative;
-  transform: translateY(40px);
-  margin-top: 20px;
+    position: relative;
+    transform: translateY(40px);
+    margin-top: 20px;
 
-  @media (min-width: 768px) {
-    transform: translateY(0px);
-  }
+    @media (min-width: 768px) {
+        transform: translateY(0px);
+    }
 `;
 
 const LogInSVG = () => {
-  return (
-    <PositionContainer>
-      <SvgContainer>
-        <MainSvg></MainSvg>
-        <ChineseFood></ChineseFood>
-      </SvgContainer>
-    </PositionContainer>
-  );
+    return (
+        <PositionContainer>
+            <SvgContainer>
+                <MainSvg></MainSvg>
+                <ChineseFood></ChineseFood>
+            </SvgContainer>
+        </PositionContainer>
+    );
 };
 
 export default LogInSVG;
