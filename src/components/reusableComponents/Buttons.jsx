@@ -11,6 +11,17 @@ const Button = styled(Link)`
     transition: 500ms;
     padding: 12px 24px;
 `;
+
+const NavLinks = styled(Button)`
+    font-size: 14px;
+    transition: 500ms;
+    padding: 0;
+    color: ${({ theme }) => theme.mainTextColor};
+    &:hover {
+        color: #8baa36;
+    }
+`;
+
 const LinkWrapper = styled(Link)``;
 const RoundedLinkBtn = styled(Button)`
     border-radius: 24px 44px;
@@ -128,5 +139,6 @@ export {
     RoundedGreenToDark,
     MirrorFormButton,
     LinkWrapper,
+    NavLinks,
 };
 export default Button;

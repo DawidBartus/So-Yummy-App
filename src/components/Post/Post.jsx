@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { ModalTest } from '../Modal/Modal';
 import React, { useState } from 'react';
+import Loader from '../reusableComponents/Loader';
 // import PretendApiFetch from "./PostApiFetch";
 
 const PostContainer = styled.div`
@@ -10,6 +11,7 @@ const PostContainer = styled.div`
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
+    margin-bottom: 20px;
     &:hover p {
         text-decoration: underline;
     }
@@ -24,6 +26,7 @@ const PostBackground = styled.div`
     width: 100%;
     height: 100%;
     background-image: ${({ $url }) => `url(${$url})`};
+    background-size: cover;
 `;
 
 const PostParagraph = styled.p`
@@ -50,11 +53,14 @@ const Post = ({ props }) => {
             setLogOut((prev) => !prev);
         }
     };
-
     return (
-        <React.Fragment key={recipe.label}>
+        <React.Fragment>
             <PostContainer onClick={toggleModal}>
-                <PostBackground $url={recipe.image} data-close="close" />
+                {recipe.image ? (
+                    <PostBackground $url={recipe.image} data-close="close" />
+                ) : (
+                    <Loader />
+                )}
                 <PostParagraph>{recipe.label}</PostParagraph>
             </PostContainer>
             <ModalTest $showModal={isOpen} onClick={toggleModal}>

@@ -1,19 +1,12 @@
 import { styled } from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../utils/searchIcon.svg';
+import { NavLinks } from '../reusableComponents/Buttons';
 
 const NavList = styled.ul`
     display: flex;
     gap: 30px;
     @media (max-width: 1278px) {
         display: none;
-    }
-`;
-
-const Anchor = styled.a`
-    transition: 1s;
-    color: ${({ theme }) => theme.mainTextColor};
-    &:hover {
-        color: #8baa36;
     }
 `;
 
@@ -31,24 +24,24 @@ const MainMenu = ({ style }) => {
     return (
         <NavList style={style}>
             <li>
-                <Anchor href="#">Categories</Anchor>
+                <NavLinks to="/home/categories/beef">Categories</NavLinks>
             </li>
             <li>
-                <Anchor href="#">Add recipes</Anchor>
+                <NavLinks href="#">Add recipes</NavLinks>
             </li>
             <li>
-                <Anchor href="#">My recipes</Anchor>
+                <NavLinks href="#">My recipes</NavLinks>
             </li>
             <li>
-                <Anchor href="#">Favorites</Anchor>
+                <NavLinks href="#">Favorites</NavLinks>
             </li>
             <li>
-                <Anchor href="#">Shopping list</Anchor>
+                <NavLinks href="#">Shopping list</NavLinks>
             </li>
             <li>
-                <Anchor href="#">
+                <NavLinks href="#">
                     <Search />
-                </Anchor>
+                </NavLinks>
             </li>
         </NavList>
     );

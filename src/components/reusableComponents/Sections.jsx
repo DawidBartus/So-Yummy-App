@@ -43,6 +43,13 @@ const SignInUpSection = styled(PageSection)`
         justify-content: space-evenly;
     }
 `;
+const OutletSection = styled.section`
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+`;
 
 const BlackToGreenSection = styled.footer`
     background-color: ${({ theme }) => theme.darkToGreen};
@@ -52,5 +59,11 @@ const BlackToGreenSection = styled.footer`
     transition: 10s;
 `;
 
-export { SignInUpSection, BlackToGreenSection, HeaderSection, MainSection };
+export {
+    SignInUpSection,
+    BlackToGreenSection,
+    HeaderSection,
+    MainSection,
+    OutletSection,
+};
 export default PageSection;

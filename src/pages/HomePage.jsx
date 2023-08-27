@@ -1,6 +1,9 @@
 import { Outlet } from 'react-router';
 import Navigation from '../components/navigation/Navigation';
-import { MainSection } from '../components/reusableComponents/Sections';
+import {
+    MainSection,
+    OutletSection,
+} from '../components/reusableComponents/Sections';
 import Footer from '../components/Footer/Footer';
 
 const HomePage = () => {
@@ -8,7 +11,9 @@ const HomePage = () => {
         <>
             <Navigation />
             <MainSection>
-                <Outlet />
+                <OutletSection>
+                    <Outlet />
+                </OutletSection>
             </MainSection>
             <Footer />
         </>
