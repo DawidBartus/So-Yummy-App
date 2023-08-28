@@ -23,8 +23,16 @@ const fetchRecipes = async (props) => {
     let result = await axios(
         `https://api.edamam.com/api/recipes/v2?type=public&q=${props}&app_id=${apiId}&app_key=${baseKey}`
     ).then((res) => res.data.hits);
-
+    console.log(result);
     return result;
 };
-export { fetchRecipes };
+
+const fetchByUri = async ({ uri }) => {
+    let result = await axios(
+        `https://api.edamam.com/api/recipes/v2/by-uri?type=public&uri=${uri}&app_id=${apiId}&app_key=${baseKey}`
+    );
+    console.log(result);
+    return result;
+};
+export { fetchRecipes, fetchByUri };
 export default firstApiFetch;

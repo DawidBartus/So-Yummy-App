@@ -36,6 +36,10 @@ function App() {
                             path="/home/categories/:id"
                             element={<CategoriesItems />}
                         />
+                        <Route
+                            path="/home/categories/:id/:link"
+                            element={<DevComponents />}
+                        />
                     </Route>
                     <Route path="/home/Dev" element={<DevComponents />} />
                     <Route path="*" element={<NotFound />} />
