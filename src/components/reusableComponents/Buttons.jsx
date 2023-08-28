@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 // styled Link
+// base
 const Button = styled(Link)`
     font-size: 16px;
     cursor: pointer;
@@ -12,6 +13,7 @@ const Button = styled(Link)`
     padding: 12px 24px;
 `;
 
+// button like Link - navigation
 const NavLinks = styled(Button)`
     font-size: 14px;
     transition: 500ms;
@@ -21,14 +23,10 @@ const NavLinks = styled(Button)`
         color: #8baa36;
     }
 `;
-
+// Wrapper for components
 const LinkWrapper = styled(Link)``;
-const RoundedLinkBtn = styled(Button)`
-    border-radius: 24px 44px;
-    &:hover {
-        border-radius: 44px 24px;
-    }
-`;
+
+// Button with underLine effect
 const StyledLink = styled(Button)`
     padding: 0px;
     color: ${({ theme }) => theme.mainTextColor};
@@ -37,7 +35,27 @@ const StyledLink = styled(Button)`
         border-bottom: 1px solid ${({ theme }) => theme.standardGreen};
     }
 `;
+// Button with background color like AllGreenBtn except border radius
+const GreenLink = styled(Button)`
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 6px;
+    align-self: end;
+    color: ${({ theme }) => theme.standardWhite};
+    background-color: ${({ theme }) => theme.standardGreen};
+    &:hover {
+        color: ${({ theme }) => theme.standardBlack};
+    }
+`;
 
+// Rounded Button base
+const RoundedLinkBtn = styled(Button)`
+    border-radius: 24px 44px;
+    &:hover {
+        border-radius: 44px 24px;
+    }
+`;
+// Rounded button with opposite border color
 const GreenToBlackBtn = styled(RoundedLinkBtn)`
     border: 1px solid ${({ theme }) => theme.blackToGreen};
     background-color: ${({ theme }) => theme.standardGreen};
@@ -47,7 +65,7 @@ const GreenToBlackBtn = styled(RoundedLinkBtn)`
         color: ${({ theme }) => theme.standardWhite};
     }
 `;
-
+// Transparent button - needs background other then white
 const TransparentToBlackBtn = styled(RoundedLinkBtn)`
     border: 1px solid ${({ theme }) => theme.standardWhite};
     background-color: transparent;
@@ -56,7 +74,7 @@ const TransparentToBlackBtn = styled(RoundedLinkBtn)`
         background-color: ${({ theme }) => theme.standardBlack};
     }
 `;
-
+// button placed under position relative element
 const UnderFormButton = styled(RoundedLinkBtn)`
     position: absolute;
     bottom: -60px;
@@ -66,7 +84,7 @@ const UnderFormButton = styled(RoundedLinkBtn)`
     text-decoration: underline;
     background-color: ${({ theme }) => theme.standardDarkBlack};
 `;
-
+// Rounded button with one color
 const AllGreenBtn = styled(RoundedLinkBtn)`
     border: 1px solid ${({ theme }) => theme.standardGreen};
     background-color: ${({ theme }) => theme.standardGreen};
@@ -140,5 +158,6 @@ export {
     MirrorFormButton,
     LinkWrapper,
     NavLinks,
+    GreenLink,
 };
 export default Button;

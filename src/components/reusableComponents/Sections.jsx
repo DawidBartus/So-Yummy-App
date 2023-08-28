@@ -49,6 +49,8 @@ const OutletSection = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 0 10px;
+    /* box-sizing: border-box; */
 `;
 
 const BlackToGreenSection = styled.footer`

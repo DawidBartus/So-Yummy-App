@@ -1,7 +1,5 @@
 import { styled } from 'styled-components';
-import { ModalTest } from '../Modal/Modal';
-import React, { useState } from 'react';
-import Loader from '../reusableComponents/Loader';
+import React from 'react';
 import { LinkWrapper } from '../reusableComponents/Buttons';
 // import PretendApiFetch from "./PostApiFetch";
 
@@ -30,14 +28,6 @@ const PostBackground = styled.img`
         scale: 1.05;
     }
 `;
-// const PostBackground = styled.div`
-//     transition: 500ms;
-//     background-size: contain;
-//     width: 100%;
-//     height: 100%;
-//     background-image: ${({ $url }) => `url(${$url})`};
-//     background-size: cover;
-// `;
 
 const PostParagraph = styled.p`
     position: absolute;
@@ -51,17 +41,6 @@ const PostParagraph = styled.p`
 
 const Post = ({ props }) => {
     let { recipe } = props;
-    // modal controller
-    // const [isOpen, setIsOpen] = useState(false);
-
-    // const toggleModal = (e) => {
-    //     e.stopPropagation();
-
-    //     const target = e.target.getAttribute('data-close');
-    //     if (target === 'close') {
-    //         setIsOpen((prev) => !prev);
-    //     }
-    // };
 
     return (
         <React.Fragment>

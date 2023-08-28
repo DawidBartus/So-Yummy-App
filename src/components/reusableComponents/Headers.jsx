@@ -23,7 +23,7 @@ const FormHeader = styled.h2`
 `;
 
 const SubsectionHeader = styled.h3`
-    color: ${({ theme }) => theme.standardWhite};
+    color: ${({ theme }) => theme.headers};
     font-family: Poppins;
     font-size: 28px;
     font-style: normal;
