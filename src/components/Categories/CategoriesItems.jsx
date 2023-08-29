@@ -1,28 +1,29 @@
 import { useParams } from 'react-router';
-import { fetchRecipes } from '../../Services/ApiFetch';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategoriesRecipes } from '../../redux/recipesSlice';
 import Post from '../Post/Post';
 
 const CategoriesItems = () => {
     let { id } = useParams();
-    const [data, setData] = useState([]);
+    const dispatch = useDispatch();
+    const recipes = useSelector((state) => state.recipes.categoriesRecipes);
+    const pageRecipes = recipes[id] || [];
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await fetchRecipes(id);
-                setData(result);
-            } catch (error) {
-                console.error(error);
+        try {
+            if (pageRecipes.length === 0) {
+                dispatch(fetchCategoriesRecipes(id));
             }
-        };
-        fetchData();
-    }, [id]);
+        } catch (error) {
+            console.error(error);
+        }
+    }, [id, dispatch, pageRecipes.length]);
 
     return (
         <>
-            {data.map((elem, index) => (
-                <Post key={index} props={elem} onClick={{}} />
+            {pageRecipes.map((elem, index) => (
+                <Post key={index} props={elem} />
             ))}
         </>
     );

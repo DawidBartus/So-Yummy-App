@@ -8,13 +8,10 @@ import NotFound from './components/NotFound/NotFound';
 import RegisterForm from './pages/RegisterPage';
 import LogInPage from './pages/LogInPage';
 import DevComponents from './pages/DevComponents';
-import HomePage from './pages/HomePage';
-import firstApiFetch from './Services/ApiFetch';
-import StartPage from './components/StartPage/StartPage';
-import Categories from './pages/Categories';
+import NavigationPage from './pages/NavigationPage';
+import CategoriesPage from './pages/CategoriesPage';
 import CategoriesItems from './components/Categories/CategoriesItems';
-
-const startFetch = await firstApiFetch();
+import HomePage from './pages/HomePage';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -25,12 +22,12 @@ function App() {
                 <Route path="/" element={<Welcome />} />
                 <Route path="/signUp" element={<RegisterForm />} />
                 <Route path="/signIn" element={<LogInPage />} />
-                <Route path="/home" element={<HomePage />}>
+                <Route path="/home" element={<NavigationPage />}>
+                    <Route path="/home" element={<HomePage />} />
                     <Route
-                        path="/home"
-                        element={<StartPage recipes={startFetch} />}
-                    />
-                    <Route path="/home/categories/" element={<Categories />}>
+                        path="/home/categories/"
+                        element={<CategoriesPage />}
+                    >
                         <Route element={<CategoriesItems />} />
                         <Route
                             path="/home/categories/:id"
