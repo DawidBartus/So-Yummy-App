@@ -25,17 +25,25 @@ const fetchCategoriesRecipes = createAsyncThunk(
     }
 );
 
-const initialState = { recipes: [], categoriesRecipes: {} };
+const initialState = { recipes: [], isPending: false, categoriesRecipes: {} };
 
 const recipesSlice = createSlice({
     name: 'recipes',
     initialState,
     extraReducers: (builder) => {
         builder
+            .addCase(fetchStartValue.pending, (state, payload) => {
+                state.isPending = true;
+            })
+            .addCase(fetchCategoriesRecipes.pending, (state, payload) => {
+                state.isPending = true;
+            })
             .addCase(fetchStartValue.fulfilled, (state, action) => {
+                state.isPending = false;
                 state.recipes = action.payload;
             })
             .addCase(fetchCategoriesRecipes.fulfilled, (state, action) => {
+                state.isPending = false;
                 let { id, response } = action.payload;
                 state.categoriesRecipes[id] = response;
             });

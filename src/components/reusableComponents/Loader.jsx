@@ -1,14 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
 const LoaderWrapper = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    position: relative;
     transition: 500ms;
-    z-index: 999;
-    background-color: ${({ theme }) => theme.transparentBg};
 `;
 
 const loaderAnimation = keyframes`
@@ -29,7 +23,7 @@ const Spinner = styled.span`
     position: relative;
     top: 50%;
     left: 50%;
-
+    transform: translate(-50%, -50%);
     &::after,
     &::before {
         content: '';
@@ -37,7 +31,7 @@ const Spinner = styled.span`
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        border: 2px solid #fff;
+        border: 5px solid ${({ theme }) => theme.standardGreen};
         position: absolute;
         left: 0;
         top: 0;
@@ -52,7 +46,7 @@ const Spinner = styled.span`
 const Loader = () => {
     return (
         <LoaderWrapper>
-            <Spinner></Spinner>
+            <Spinner />
         </LoaderWrapper>
     );
 };

@@ -1,60 +1,25 @@
-import { styled } from 'styled-components';
 import React from 'react';
 import { LinkWrapper } from '../reusableComponents/Buttons';
-// import PretendApiFetch from "./PostApiFetch";
-
-const PostContainer = styled.div`
-    position: relative;
-    width: 336px;
-    height: 323px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 20px;
-    &:hover p {
-        text-decoration: underline;
-    }
-    &:hover div {
-        transform: scale(1.1);
-    }
-`;
-
-const PostBackground = styled.img`
-    transition: 500ms;
-    background-size: contain;
-    width: 100%;
-    height: 100%;
-    &:hover {
-        scale: 1.05;
-    }
-`;
-
-const PostParagraph = styled.p`
-    position: absolute;
-    bottom: 26px;
-    left: 18px;
-    background-color: white;
-    width: calc(100% - 68px);
-    padding: 16px;
-    border-radius: 8px;
-`;
+import PostContainer, {
+    PostBackground,
+    PostParagraph,
+} from './PostStyledElements';
 
 const Post = ({ props }) => {
-    let { recipe } = props;
+    let { label, images, image, recipeId } = props;
 
     return (
-        <React.Fragment>
+        <>
             <PostContainer>
-                <LinkWrapper to={`${recipe.label}`}>
+                <LinkWrapper to={`${recipeId}`}>
                     <PostBackground
-                        src={recipe.images.REGULAR.url || recipe.image}
+                        src={images.REGULAR.url || image}
                         data-close="close"
-                        id={recipe.uri}
                     />
-                    <PostParagraph>{recipe.label}</PostParagraph>
+                    <PostParagraph>{label}</PostParagraph>
                 </LinkWrapper>
             </PostContainer>
-        </React.Fragment>
+        </>
     );
 };
 

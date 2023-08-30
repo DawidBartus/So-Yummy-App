@@ -32,10 +32,12 @@ const HomePage = () => {
                 sectionName={'breakfast'}
                 sectionRecipes={breakfast}
             />
+
             <HomeSectionElement
                 sectionName={'desserts'}
                 sectionRecipes={desserts}
             />
+
             <HomeSectionElement sectionName={'vegan'} sectionRecipes={vegan} />
         </FlexContainer>
     );

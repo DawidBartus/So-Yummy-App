@@ -50,7 +50,8 @@ const OutletSection = styled.section`
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0 10px;
-    /* box-sizing: border-box; */
+    min-height: 100vh;
+    box-sizing: border-box;
 `;
 
 const BlackToGreenSection = styled.footer`

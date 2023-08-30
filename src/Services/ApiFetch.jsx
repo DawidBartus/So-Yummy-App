@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 const baseKey = '36c3ac425b9892779965b003d89cde16';
 const apiId = '80ef1424';
@@ -8,7 +9,12 @@ const fetchRecipes = async (query) => {
         const response = await axios(
             `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${apiId}&app_key=${baseKey}`
         );
-        return response.data.hits;
+
+        const responseArray = response.data.hits.map(({ recipe }) => {
+            return { ...recipe, recipeId: nanoid() };
+        });
+
+        return responseArray;
     } catch (error) {
         console.error(error);
         return [];
