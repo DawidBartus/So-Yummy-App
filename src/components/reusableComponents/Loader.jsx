@@ -1,8 +1,17 @@
 import styled, { keyframes } from 'styled-components';
 
 const LoaderWrapper = styled.div`
-    position: relative;
     transition: 500ms;
+`;
+const FixedWrapper = styled.div`
+    transition: 500ms;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: ${({ theme }) => theme.standardLightGreen};
 `;
 
 const loaderAnimation = keyframes`
@@ -31,11 +40,11 @@ const Spinner = styled.span`
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        border: 5px solid ${({ theme }) => theme.standardGreen};
         position: absolute;
         left: 0;
         top: 0;
         animation: ${loaderAnimation} 2s linear infinite;
+        border: 5px solid ${({ theme }) => theme.standardGreen};
     }
 
     &::after {
@@ -50,4 +59,14 @@ const Loader = () => {
         </LoaderWrapper>
     );
 };
+
+const FixedLoader = () => {
+    return (
+        <FixedWrapper>
+            <Spinner />
+        </FixedWrapper>
+    );
+};
+
+export { FixedLoader };
 export default Loader;

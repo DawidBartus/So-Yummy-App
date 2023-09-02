@@ -8,7 +8,7 @@ const PostContainer = styled.div`
     overflow: hidden;
     cursor: pointer;
     margin-bottom: 20px;
-    background-color: #80808057;
+    background-color: transparent;
     &:hover p {
         text-decoration: underline;
     }
@@ -22,19 +22,22 @@ const PostBackground = styled.img`
     background-size: contain;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     &:hover {
         scale: 1.05;
     }
 `;
 
 const PostParagraph = styled.p`
+    transition: 500ms;
     position: absolute;
     bottom: 26px;
     left: 18px;
-    background-color: white;
     width: calc(100% - 68px);
     padding: 16px;
     border-radius: 8px;
+    color: ${({ theme }) => theme.mainTextColor};
+    background-color: ${({ theme }) => theme.mainBg};
 `;
 
 export { PostBackground, PostParagraph };

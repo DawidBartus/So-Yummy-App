@@ -25,17 +25,37 @@ const fetchCategoriesRecipes = createAsyncThunk(
     }
 );
 
-const initialState = { recipes: [], isPending: false, categoriesRecipes: {} };
+const fetchSearchQuery = createAsyncThunk(
+    'recipes/fetchSearchQuery',
+    async (query, thunkApi) => {
+        try {
+            const response = await fetchRecipes(query);
+            return response;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+);
+
+const initialState = {
+    recipes: [],
+    isPending: false,
+    categoriesRecipes: {},
+    foundRecipes: [],
+};
 
 const recipesSlice = createSlice({
     name: 'recipes',
     initialState,
     extraReducers: (builder) => {
         builder
-            .addCase(fetchStartValue.pending, (state, payload) => {
+            .addCase(fetchStartValue.pending, (state, _) => {
                 state.isPending = true;
             })
-            .addCase(fetchCategoriesRecipes.pending, (state, payload) => {
+            .addCase(fetchCategoriesRecipes.pending, (state, _) => {
+                state.isPending = true;
+            })
+            .addCase(fetchSearchQuery.pending, (state, _) => {
                 state.isPending = true;
             })
             .addCase(fetchStartValue.fulfilled, (state, action) => {
@@ -46,9 +66,13 @@ const recipesSlice = createSlice({
                 state.isPending = false;
                 let { id, response } = action.payload;
                 state.categoriesRecipes[id] = response;
+            })
+            .addCase(fetchSearchQuery.fulfilled, (state, action) => {
+                state.isPending = false;
+                state.foundRecipes = action.payload;
             });
     },
 });
 
-export { fetchStartValue, fetchCategoriesRecipes };
+export { fetchStartValue, fetchCategoriesRecipes, fetchSearchQuery };
 export default recipesSlice.reducer;

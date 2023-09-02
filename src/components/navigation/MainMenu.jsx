@@ -20,26 +20,36 @@ const Search = styled(SearchIcon)`
     }
 `;
 
-const MainMenu = ({ style }) => {
+const MainMenu = ({ style, close }) => {
     return (
         <NavList style={style}>
             <li>
-                <NavLinks to="/home/categories/beef">Categories</NavLinks>
+                <NavLinks to="/home/categories/beef" onClick={close}>
+                    Categories
+                </NavLinks>
             </li>
             <li>
-                <NavLinks href="#">Add recipes</NavLinks>
+                <NavLinks href="#" onClick={close}>
+                    Add recipes
+                </NavLinks>
             </li>
             <li>
-                <NavLinks href="#">My recipes</NavLinks>
+                <NavLinks href="#" onClick={close}>
+                    My recipes
+                </NavLinks>
             </li>
             <li>
-                <NavLinks href="#">Favorites</NavLinks>
+                <NavLinks href="#" onClick={close}>
+                    Favorites
+                </NavLinks>
             </li>
             <li>
-                <NavLinks href="#">Shopping list</NavLinks>
+                <NavLinks href="#" onClick={close}>
+                    Shopping list
+                </NavLinks>
             </li>
             <li>
-                <NavLinks href="#">
+                <NavLinks to={'/home/search'} onClick={close}>
                     <Search />
                 </NavLinks>
             </li>

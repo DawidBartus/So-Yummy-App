@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Switch from './Switch';
 import MainMenu from './MainMenu';
 import CompanyIcon from '../reusableComponents/CompanyIcon';
-import MobileMenu from './MobileMenu';
+import MobileMenu from './MobileMenu/MobileMenu';
 import { useState } from 'react';
 import LogOut from '../LogOut/LogOut';
 import { HeaderSection } from '../reusableComponents/Sections';

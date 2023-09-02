@@ -12,6 +12,7 @@ import NavigationPage from './pages/NavigationPage';
 import CategoriesPage from './pages/CategoriesPage';
 import CategoriesItems from './components/Categories/CategoriesItems';
 import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -38,6 +39,7 @@ function App() {
                             element={<DevComponents />}
                         />
                     </Route>
+                    <Route path="/home/search" element={<SearchPage />} />
                     <Route path="/home/Dev" element={<DevComponents />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>

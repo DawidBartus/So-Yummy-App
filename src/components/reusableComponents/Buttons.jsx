@@ -24,7 +24,9 @@ const NavLinks = styled(Button)`
     }
 `;
 // Wrapper for components
-const LinkWrapper = styled(Link)``;
+const LinkWrapper = styled(Link)`
+    /* transform: translateY(-100%); */
+`;
 
 // Button with underLine effect
 const StyledLink = styled(Button)`

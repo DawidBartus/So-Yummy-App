@@ -1,12 +1,7 @@
 import { styled } from 'styled-components';
-import { ReactComponent as Menu } from '../../utils/hamburger.svg';
+import { ReactComponent as Menu } from '../../../utils/hamburger.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
-import CompanyIcon from '../reusableComponents/CompanyIcon';
-import MainMenu from './MainMenu';
-import Switch from './Switch';
-import spinach from '../../utils/spinachMobile.png';
-import { useState } from 'react';
+import spinach from '../../../utils/spinachMobile.png';
 
 const MobileMenuIcon = styled(Menu)`
     cursor: pointer;
@@ -96,37 +91,13 @@ const switchON = {
     },
 };
 
-const MobileList = ({ close, state }) => {
-    return (
-        <MenuWrapper open={state}>
-            <FlexContainer>
-                <CompanyIcon close={close} />
-                <CloseIcon icon={faX} onClick={close} />
-            </FlexContainer>
-            <CenteredFlexContainer>
-                <MainMenu style={mobileCss} />
-            </CenteredFlexContainer>
-            <Switch style={switchON} />
-            <BackgroundImage />
-        </MenuWrapper>
-    );
+export {
+    switchON,
+    mobileCss,
+    CenteredFlexContainer,
+    CloseIcon,
+    BackgroundImage,
+    MobileMenuIcon,
+    FlexContainer,
 };
-
-const MobileMenu = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleOpen = () => {
-        setIsOpen((prevState) => !prevState);
-    };
-
-    return (
-        <>
-            <div onClick={toggleOpen}>
-                <MobileMenuIcon />
-            </div>
-            <MobileList close={toggleOpen} state={isOpen} />
-        </>
-    );
-};
-
-export default MobileMenu;
+export default MenuWrapper;

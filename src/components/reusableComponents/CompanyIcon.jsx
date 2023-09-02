@@ -18,7 +18,7 @@ const SVGLigthFork = styled(SvgFork)`
 
 const CompanyIcon = ({ close }) => {
     return (
-        <StyledLink to="/home/Dev" onClick={close}>
+        <StyledLink to="/home" onClick={close}>
             <SvgFork>
                 <Fork style={{ stroke: '#fff' }} />
             </SvgFork>
@@ -28,7 +28,7 @@ const CompanyIcon = ({ close }) => {
 
 const CompanyV2Icon = () => {
     return (
-        <StyledLink to="/home/Dev">
+        <StyledLink to="/home">
             <SVGLigthFork>
                 <Fork style={{ stroke: '#8BAA36' }} />
             </SVGLigthFork>
