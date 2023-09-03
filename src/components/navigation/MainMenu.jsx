@@ -24,7 +24,7 @@ const MainMenu = ({ style, close }) => {
     return (
         <NavList style={style}>
             <li>
-                <NavLinks to="/home/categories/beef" onClick={close}>
+                <NavLinks to="/home/categories/Beef" onClick={close}>
                     Categories
                 </NavLinks>
             </li>

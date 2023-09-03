@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { LinkWrapper } from '../reusableComponents/Buttons';
 import PostContainer, {
     PostBackground,
     PostParagraph,

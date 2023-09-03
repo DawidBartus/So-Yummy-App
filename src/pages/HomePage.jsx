@@ -29,16 +29,16 @@ const HomePage = () => {
             }}
         >
             <HomeSectionElement
-                sectionName={'breakfast'}
+                sectionName={'Breakfast'}
                 sectionRecipes={breakfast}
             />
 
             <HomeSectionElement
-                sectionName={'desserts'}
+                sectionName={'Desserts'}
                 sectionRecipes={desserts}
             />
 
-            <HomeSectionElement sectionName={'vegan'} sectionRecipes={vegan} />
+            <HomeSectionElement sectionName={'Vegan'} sectionRecipes={vegan} />
         </FlexContainer>
     );
 };

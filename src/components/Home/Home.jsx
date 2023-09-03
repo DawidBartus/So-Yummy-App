@@ -10,6 +10,8 @@ const PostWrapper = styled(FlexContainer)`
     gap: 10;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    transition: 500ms;
+
     @media (max-width: 576px) {
         & div:nth-last-of-type(-n + 3) {
             display: none;

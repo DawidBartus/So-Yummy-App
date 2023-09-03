@@ -4,7 +4,6 @@ const PostContainer = styled.div`
     position: relative;
     width: 336px;
     height: 323px;
-    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     margin-bottom: 20px;
@@ -22,6 +21,7 @@ const PostBackground = styled.img`
     background-size: contain;
     width: 100%;
     height: 100%;
+    border-radius: 8px;
     overflow: hidden;
     &:hover {
         scale: 1.05;
