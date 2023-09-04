@@ -1,8 +1,8 @@
 import FlexContainer from '../FlexContainer';
-import { MirrorFormButton } from '../reusableComponents/Buttons';
+import { BlackToGreenButton } from '../reusableComponents/Buttons';
 import { EmailInput } from '../reusableComponents/Inputs';
 import { CompanyV2Icon } from '../reusableComponents/CompanyIcon';
-import { SubsectionHeader } from '../reusableComponents/Headers';
+import { LightSectionHeader } from '../reusableComponents/Headers';
 import FooterSection, {
     FormContainer,
     FooterList,
@@ -11,7 +11,9 @@ import FooterSection, {
     FooterFlexWrapper,
     WhiteLink,
     NewsletterSection,
+    DisplayDiv,
 } from './FooterComponents';
+import { BigParagraph, SmallParagraph } from '../reusableComponents/Text';
 
 const Footer = () => {
     return (
@@ -25,7 +27,7 @@ const Footer = () => {
                         }}
                     >
                         <CompanyV2Icon />
-                        <SubsectionHeader>So Yummy</SubsectionHeader>
+                        <LightSectionHeader>So Yummy</LightSectionHeader>
                     </FlexContainer>
                     <FooterList>
                         <li>Database of recipes that can be replenished </li>
@@ -45,8 +47,23 @@ const Footer = () => {
                 </LinkContainer>
                 <FormContainer>
                     <NewsletterSection action="">
+                        <DisplayDiv>
+                            <BigParagraph style={{ color: '#fff' }}>
+                                Subscribe to our Newsletter
+                            </BigParagraph>
+                            <SmallParagraph
+                                style={{
+                                    color: '#fff',
+                                    maxWidth: 400,
+                                    marginTop: 10,
+                                }}
+                            >
+                                Subscribe up to our newsletter. Be in touch with
+                                latest news and special offers, etc.
+                            </SmallParagraph>
+                        </DisplayDiv>
                         <EmailInput placeholder={'Enter your email address'} />
-                        <MirrorFormButton>Subscribe</MirrorFormButton>
+                        <BlackToGreenButton>Subscribe</BlackToGreenButton>
                     </NewsletterSection>
                 </FormContainer>
             </FooterFlexWrapper>

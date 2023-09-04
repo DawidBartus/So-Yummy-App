@@ -69,6 +69,9 @@ const FooterList = styled.ul`
 
 const FormContainer = styled(FlexContainer)`
     padding: 0 10px;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
 `;
 
 const NewsletterSection = styled.form`
@@ -76,13 +79,19 @@ const NewsletterSection = styled.form`
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 458px;
+    align-items: center;
+
     @media (min-width: 768px) {
         flex-direction: row;
-        align-items: center;
     }
     @media (min-width: 1279px) {
         flex-direction: column;
+    }
+`;
+const DisplayDiv = styled.div`
+    display: none;
+    @media (min-width: 1279px) {
+        display: block;
     }
 `;
 
@@ -94,5 +103,6 @@ export {
     FooterFlexWrapper,
     WhiteLink,
     NewsletterSection,
+    DisplayDiv,
 };
 export default FooterSection;

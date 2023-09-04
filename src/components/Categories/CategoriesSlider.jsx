@@ -5,9 +5,8 @@ import { useParams } from 'react-router';
 const StyledLi = styled.li`
     padding: 8px 10px 28px;
     border-bottom: 1px solid ${({ $active }) => $active};
-
     &:hover {
-        border-bottom: 1px solid green;
+        border-bottom: 1px solid #8baa36;
         a {
             color: #8baa36;
             border: none;
@@ -22,7 +21,7 @@ const StyledLi = styled.li`
 
 const StyledList = styled.ul`
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20;
 `;
@@ -44,7 +43,12 @@ const CategoriesSlider = () => {
     const { id } = useParams();
 
     return (
-        <div style={{ marginBottom: 30 }}>
+        <div
+            style={{
+                marginBottom: 30,
+                width: '100%',
+            }}
+        >
             <StyledList>
                 {categoryNames.map((element) => (
                     <StyledLi

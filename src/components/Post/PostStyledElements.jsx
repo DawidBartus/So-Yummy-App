@@ -8,6 +8,7 @@ const PostContainer = styled.div`
     cursor: pointer;
     margin-bottom: 20px;
     background-color: transparent;
+    border-radius: 8px;
     &:hover p {
         text-decoration: underline;
     }

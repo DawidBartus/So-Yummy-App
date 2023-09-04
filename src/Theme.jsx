@@ -34,6 +34,7 @@ const darkTheme = {
     mobileBg: thBlack,
     mainTextColor: thWhite,
     blackToGreen: thDarkGreen,
+    greenToDark: thBttnBlack,
     buttonHover: thBttnBlack,
     headers: thWhite,
     transparentBg: thTransWhite,
@@ -42,9 +43,10 @@ const darkTheme = {
 const lightTheme = {
     ...standard,
     mainBg: thWhite, // background white -> black
-    mobileBg: thGreen,
+    mobileBg: thGreen, //background green -> black
     mainTextColor: textBlack, // text black -> white
     blackToGreen: thBttnBlack, //black to dark greens
+    greenToDark: thDarkGreen,
     buttonHover: thDarkGreen,
     headers: thNavy, // headers navy -> white
     transparentBg: thTransBlack, //modal transparent black - > white

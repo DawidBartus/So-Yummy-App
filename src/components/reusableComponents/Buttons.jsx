@@ -106,6 +106,18 @@ const basisBtn = styled.button`
     line-height: 18px;
 `;
 
+const BlackToGreenButton = styled(basisBtn)`
+    width: 100%;
+    min-width: 200px;
+    max-width: 400px;
+    background-color: ${({ theme }) => theme.greenToDark};
+    color: ${({ theme }) => theme.standardWhite};
+    &:hover {
+        background-color: ${({ theme }) => theme.darkToGreen};
+        text-decoration: underline;
+    }
+`;
+
 const FormButton = styled(basisBtn)`
     width: 100%;
     max-width: 400px;
@@ -161,5 +173,6 @@ export {
     LinkWrapper,
     NavLinks,
     GreenLink,
+    BlackToGreenButton,
 };
 export default Button;

@@ -53,6 +53,9 @@ const IconContainer = styled.span`
 
 const InputHolder = styled.div`
     position: relative;
+    width: 100%;
+    min-width: 150px;
+    max-width: 400px;
 `;
 
 const Icon = styled(FontAwesomeIcon)`
