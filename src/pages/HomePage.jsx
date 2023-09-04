@@ -6,8 +6,12 @@ import { fetchStartValue } from '../redux/recipesSlice';
 
 const HomePage = () => {
     const dispatch = useDispatch();
-    const recipes = useSelector((state) => state.recipes.recipes);
+    const recipes = useSelector((state) => state.recipes.categoriesRecipes);
     const { breakfast = [], vegan = [], desserts = [] } = recipes;
+
+    const slicedBreakfast = breakfast.slice(0, 4);
+    const slicedDesserts = desserts.slice(0, 4);
+    const slicedVegan = vegan.slice(0, 4);
 
     useEffect(() => {
         try {
@@ -30,15 +34,18 @@ const HomePage = () => {
         >
             <HomeSectionElement
                 sectionName={'Breakfast'}
-                sectionRecipes={breakfast}
+                sectionRecipes={slicedBreakfast}
             />
 
             <HomeSectionElement
                 sectionName={'Desserts'}
-                sectionRecipes={desserts}
+                sectionRecipes={slicedDesserts}
             />
 
-            <HomeSectionElement sectionName={'Vegan'} sectionRecipes={vegan} />
+            <HomeSectionElement
+                sectionName={'Vegan'}
+                sectionRecipes={slicedVegan}
+            />
         </FlexContainer>
     );
 };

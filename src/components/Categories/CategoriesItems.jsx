@@ -6,21 +6,22 @@ import Post from '../Post/Post';
 import Loader from '../reusableComponents/Loader';
 
 const CategoriesItems = () => {
-    let { id } = useParams();
+    const { id } = useParams();
+    const newIid = id.toLocaleLowerCase();
     const dispatch = useDispatch();
     const recipes = useSelector((state) => state.recipes.categoriesRecipes);
-    const pageRecipes = recipes[id] || [];
+    const pageRecipes = recipes[newIid] || [];
     const isPending = useSelector((store) => store.recipes.isPending);
 
     useEffect(() => {
         try {
             if (pageRecipes.length === 0) {
-                dispatch(fetchCategoriesRecipes(id));
+                dispatch(fetchCategoriesRecipes(newIid));
             }
         } catch (error) {
             console.error(error);
         }
-    }, [id, dispatch, pageRecipes.length]);
+    }, [newIid, dispatch, pageRecipes.length]);
 
     return (
         <>

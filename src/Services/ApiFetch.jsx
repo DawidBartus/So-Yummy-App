@@ -11,7 +11,7 @@ const fetchRecipes = async (query) => {
         );
 
         const responseArray = response.data.hits.map(({ recipe }) => {
-            return { ...recipe, recipeId: nanoid() };
+            return { ...recipe, recipeId: `${query}_${nanoid()}` };
         });
 
         return responseArray;
@@ -22,14 +22,9 @@ const fetchRecipes = async (query) => {
 };
 
 const firstApiFetch = async () => {
-    let fullBreakfast = await fetchRecipes('breakfast');
-    let breakfast = fullBreakfast.slice(0, 4);
-
-    let fullVegan = await fetchRecipes('vegan');
-    let vegan = fullVegan.slice(0, 4);
-
-    let fullDesserts = await fetchRecipes('desserts');
-    let desserts = fullDesserts.slice(0, 4);
+    let breakfast = await fetchRecipes('Breakfast');
+    let vegan = await fetchRecipes('Vegan');
+    let desserts = await fetchRecipes('Desserts');
 
     const results = { breakfast, vegan, desserts };
 

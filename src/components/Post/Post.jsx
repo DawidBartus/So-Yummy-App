@@ -25,7 +25,7 @@ const Post = ({ props }) => {
             <PostContainer>
                 <LinkWrapper
                     $theme={style}
-                    to={`${recipeId}`}
+                    to={`/home/${recipeId}`}
                     onLoad={handleLoad}
                 >
                     <PostBackground

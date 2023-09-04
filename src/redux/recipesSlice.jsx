@@ -38,7 +38,6 @@ const fetchSearchQuery = createAsyncThunk(
 );
 
 const initialState = {
-    recipes: [],
     isPending: false,
     categoriesRecipes: {},
     foundRecipes: [],
@@ -60,7 +59,7 @@ const recipesSlice = createSlice({
             })
             .addCase(fetchStartValue.fulfilled, (state, action) => {
                 state.isPending = false;
-                state.recipes = action.payload;
+                state.categoriesRecipes = action.payload;
             })
             .addCase(fetchCategoriesRecipes.fulfilled, (state, action) => {
                 state.isPending = false;

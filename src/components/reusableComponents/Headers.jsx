@@ -14,9 +14,6 @@ const SectionHeader = styled.h2`
     @media (min-width: 768px) {
         font-size: 36px;
     }
-    @media (min-width: 1279px) {
-        font-size: 48px;
-    }
 `;
 
 const LightSectionHeader = styled(SectionHeader)`

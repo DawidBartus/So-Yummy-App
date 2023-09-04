@@ -13,6 +13,7 @@ import CategoriesPage from './pages/CategoriesPage';
 import CategoriesItems from './components/Categories/CategoriesItems';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
+import PostDetails from './components/Post/PostDetails';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -34,13 +35,10 @@ function App() {
                             path="/home/categories/:id"
                             element={<CategoriesItems />}
                         />
-                        <Route
-                            path="/home/categories/:id/:link"
-                            element={<DevComponents />}
-                        />
                     </Route>
                     <Route path="/home/search" element={<SearchPage />} />
                     <Route path="/home/Dev" element={<DevComponents />} />
+                    <Route path="/home/:link" element={<PostDetails />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />

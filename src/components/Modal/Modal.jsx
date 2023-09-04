@@ -28,17 +28,17 @@ const CenteredModal = styled.div`
 // Modal takes: showModal = true /false
 // onClick - toggleModal Function
 // children
-const ModalTest = (props) => {
+const Modal = ({ $showModal, onClick, children }) => {
     return (
         <LogOutSection
-            $showModal={props.$showModal}
-            onClick={props.onClick}
+            $showModal={$showModal}
+            onClick={onClick}
             data-close="close"
         >
-            <CenteredModal>{props.children}</CenteredModal>
+            <CenteredModal>{children}</CenteredModal>
         </LogOutSection>
     );
 };
 
-export { CenteredModal, ModalTest };
+export { Modal };
 export default LogOutSection;

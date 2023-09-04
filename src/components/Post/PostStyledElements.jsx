@@ -41,5 +41,15 @@ const PostParagraph = styled.p`
     background-color: ${({ theme }) => theme.mainBg};
 `;
 
-export { PostBackground, PostParagraph };
+// Post details
+
+const FullImgMobile = styled.img`
+    width: 100%;
+    height: auto;
+    @media (min-width: 768px) {
+        display: none;
+    }
+`;
+
+export { PostBackground, PostParagraph, FullImgMobile };
 export default PostContainer;

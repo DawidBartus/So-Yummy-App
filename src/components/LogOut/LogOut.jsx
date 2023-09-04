@@ -11,7 +11,7 @@ import FlexContainer from '../FlexContainer';
 import TextParagraph from '../reusableComponents/Text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
-import { ModalTest } from '../Modal/Modal';
+import { Modal } from '../Modal/Modal';
 
 const LogOutContainer = styled.div`
     position: absolute;
@@ -77,17 +77,13 @@ const LogOut = ({ visible }) => {
                 </RoundedGreenToDark>
             </LogOutContainer>
 
-            <ModalTest
-                $showModal={isOpen}
-                onClick={toggleModal}
-                data-close="close"
-            >
+            <Modal $showModal={isOpen} onClick={toggleModal} data-close="close">
                 <LogOutModal
                     $logOut={isOpen}
                     onClick={toggleModal}
                     logOutFunc={handleLogOut}
                 />
-            </ModalTest>
+            </Modal>
         </>
     );
 };
