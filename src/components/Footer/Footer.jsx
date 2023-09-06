@@ -59,6 +59,7 @@ const Footer = () => {
                             <li>Convenient and easy to use</li>
                         </FooterList>
                     </ColumnWrapper>
+
                     <LinkContainer>
                         <WhiteLink>Ingredients</WhiteLink>
                         <WhiteLink>Add recipes</WhiteLink>
@@ -66,6 +67,7 @@ const Footer = () => {
                         <WhiteLink>Favorite</WhiteLink>
                         <WhiteLink>Shopping list</WhiteLink>
                     </LinkContainer>
+
                     <FormContainer>
                         <NewsletterSection action="" onSubmit={handleSubscribe}>
                             <DisplayDiv>

@@ -69,9 +69,11 @@ const FooterList = styled.ul`
 
 const FormContainer = styled(FlexContainer)`
     padding: 0 10px;
-    width: 100%;
-    max-width: 600px;
     justify-content: center;
+    @media (min-width: 768px) {
+        width: 100%;
+        max-width: 600px;
+    }
 `;
 
 const NewsletterSection = styled.form`
