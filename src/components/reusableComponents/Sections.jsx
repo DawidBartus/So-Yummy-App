@@ -49,7 +49,17 @@ const OutletSection = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 0 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
+`;
 
+const SecondaryOutlet = styled.section`
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     min-height: 100vh;
     box-sizing: border-box;
 `;
@@ -68,5 +78,6 @@ export {
     HeaderSection,
     MainSection,
     OutletSection,
+    SecondaryOutlet,
 };
 export default PageSection;

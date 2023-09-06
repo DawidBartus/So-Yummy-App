@@ -37,6 +37,9 @@ const MainInput = styled.input`
     &::placeholder {
         color: ${({ theme }) => theme.standardWhite};
     }
+    &:focus {
+        outline: none;
+    }
 `;
 
 const StyledInput = styled(MainInput)`
@@ -117,5 +120,37 @@ const PasswordInput = ({ setInputPassword }) => {
         </InputHolder>
     );
 };
-export { FormContainer, NameInput, EmailInput, PasswordInput };
+
+// Test - go to /home/Dev
+const UniversalInput = ({ setInput, placeholder, inputId, inputType }) => {
+    const icon = () => {
+        if (inputType === 'password') {
+            return faLock;
+        } else if (inputType === 'email') {
+            return faEnvelope;
+        } else if (inputType === 'text') {
+            return faUser;
+        } else {
+            return;
+        }
+    };
+
+    return (
+        <div>
+            <InputHolder>
+                <StyledInput
+                    placeholder={placeholder}
+                    id={inputId}
+                    type={inputType}
+                    onChange={setInput}
+                ></StyledInput>
+                <IconContainer>
+                    <Icon icon={icon()} color="#FAFAFA" />
+                </IconContainer>
+            </InputHolder>
+        </div>
+    );
+};
+
+export { FormContainer, NameInput, EmailInput, PasswordInput, UniversalInput };
 export default MainInput;

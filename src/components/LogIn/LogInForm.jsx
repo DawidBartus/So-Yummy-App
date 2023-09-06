@@ -12,7 +12,6 @@ import SpecialBgComponent from '../reusableComponents/SpecialBackground';
 import { useNavigate } from 'react-router';
 
 const LogInForm = () => {
-    // const [error, setError] = useState({});
     const [formValues, setFormValues] = useState({
         email: '',
         password: '',

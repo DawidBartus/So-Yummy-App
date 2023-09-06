@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import CategoriesSlider from '../components/Categories/CategoriesSlider';
-import { OutletSection } from '../components/reusableComponents/Sections';
+import { SecondaryOutlet } from '../components/reusableComponents/Sections';
 import { SectionHeader } from '../components/reusableComponents/Headers';
 
 const CategoriesPage = () => {
@@ -10,9 +10,9 @@ const CategoriesPage = () => {
                 <SectionHeader>Categories</SectionHeader>
             </div>
             <CategoriesSlider />
-            <OutletSection>
+            <SecondaryOutlet>
                 <Outlet />
-            </OutletSection>
+            </SecondaryOutlet>
         </>
     );
 };
