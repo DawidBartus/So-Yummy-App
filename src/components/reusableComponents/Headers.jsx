@@ -40,5 +40,9 @@ const SubsectionHeader = styled.h3`
     color: ${({ theme }) => theme.headers};
 `;
 
-export { SectionHeader, SubsectionHeader, LightSectionHeader };
+const RecipeHeader = styled(SectionHeader)`
+    color: ${({ theme }) => theme.standardGreen};
+`;
+
+export { SectionHeader, SubsectionHeader, LightSectionHeader, RecipeHeader };
 export default FormHeader;

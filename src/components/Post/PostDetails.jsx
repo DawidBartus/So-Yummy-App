@@ -1,16 +1,8 @@
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-// import mobileBg from '../../utils/mobileBgCatRecipe.png';
-// import { FullImgMobile } from './PostStyledElements';
 import { useEffect } from 'react';
-import { styled } from 'styled-components';
-
-const RecipeHeader = styled.h3`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-`;
+import { RecipeHeader } from '../reusableComponents/Headers';
+import { PostBackground } from './PostStyledElements';
 
 const PostDetails = () => {
     const { link } = useParams();
@@ -31,15 +23,14 @@ const PostDetails = () => {
     console.log(foundRecipe);
     return (
         <>
-            <div
-                style={{ width: '100%', height: 'auto', position: 'relative' }}
-            >
-                {/* <FullImgMobile
-                    src={mobileBg}
-                    alt="recipe background with vegetables"
-                /> */}
-                <RecipeHeader>{foundRecipe.label}</RecipeHeader>
-                <img src={foundRecipe.image} alt="" />
+            <RecipeHeader>{foundRecipe.label}</RecipeHeader>
+            <div style={{ maxWidth: 336, height: 336 }}>
+                <PostBackground
+                    src={foundRecipe.image}
+                    alt={foundRecipe.label}
+                />
+            </div>
+            <div>
                 <p>{foundRecipe.calories}</p>
                 <p>{foundRecipe.cuisineType}</p>
                 <p>{foundRecipe.mealType}</p>
