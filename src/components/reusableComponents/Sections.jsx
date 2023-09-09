@@ -50,7 +50,6 @@ const OutletSection = styled.section`
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0 10px;
-    min-height: 100vh;
     box-sizing: border-box;
 `;
 

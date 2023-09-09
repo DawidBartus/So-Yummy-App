@@ -1,15 +1,78 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect } from 'react';
 import { RecipeHeader } from '../reusableComponents/Headers';
-import { PostBackground } from './PostStyledElements';
+import { ImgHolder, PostBackground } from './PostStyledElements';
+import { styled } from 'styled-components';
+import { addItem, deleteItem } from '../../redux/shoppingListSlice';
+
+const PostContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media (min-width: 768px) {
+        width: 100%;
+        margin: 0 20px;
+    }
+`;
+const ContentHolder = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+`;
+
+const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
+    console.log(ingredients);
+    return (
+        <ul>
+            {ingredients.map((elem) => (
+                <li
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: 10,
+                        background: 'green',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                    }}
+                    key={elem.food}
+                >
+                    <img src={elem.image} alt="" width={50} height={50} />
+                    {elem.food}
+
+                    {itemList.some((element) => element.food === elem.food) ? (
+                        <button
+                            style={{ background: 'red' }}
+                            onClick={() => deleteItem(elem.food)}
+                        >
+                            delete
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() =>
+                                addItem(elem.food, elem.quantity, elem.image)
+                            }
+                        >
+                            AddToList
+                        </button>
+                    )}
+                </li>
+            ))}
+        </ul>
+    );
+};
 
 const PostDetails = () => {
-    const { link } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { link } = useParams();
     const id = link.split('_')[0].toLocaleLowerCase();
     const recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
     const foundRecipe = recipe?.find((elem) => elem.recipeId === link);
+    const list = useSelector((state) => state.shoppingList);
 
     useEffect(() => {
         if (recipe === undefined) {
@@ -17,39 +80,68 @@ const PostDetails = () => {
         }
     }, [recipe, navigate]);
 
+    const addToShoppingList = (food, quantity) => {
+        dispatch(addItem({ food, quantity }));
+    };
+
+    const deleteFromShoppingList = (food) => {
+        dispatch(deleteItem(food));
+    };
+
     if (recipe === undefined) {
         return;
     }
-    console.log(foundRecipe);
+
     return (
-        <>
-            <RecipeHeader>{foundRecipe.label}</RecipeHeader>
-            <div style={{ maxWidth: 336, height: 336 }}>
-                <PostBackground
-                    src={foundRecipe.image}
-                    alt={foundRecipe.label}
-                />
-            </div>
+        <PostContainer>
             <div>
-                <p>{foundRecipe.calories}</p>
-                <p>{foundRecipe.cuisineType}</p>
-                <p>{foundRecipe.mealType}</p>
-                <p>{foundRecipe.totalWeight}</p>
-                <p>{foundRecipe.source}</p>
-                <p>Ingredients:</p>
-                <ul>
-                    {foundRecipe.ingredients.map((elem) => (
-                        <li
-                            key={elem.food}
-                        >{`${elem.quantity} ${elem.measure} ${elem.food}`}</li>
-                    ))}
-                </ul>
-                <a href={foundRecipe.url} rel="noreferrer" target="_blank">
-                    Source
+                <RecipeHeader>{foundRecipe.label}</RecipeHeader>
+                <a
+                    style={{ fontSize: 18, textDecoration: 'underline' }}
+                    href={foundRecipe.url}
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    Source: {foundRecipe.source}
                 </a>
+
+                <p>Cuisine type: {foundRecipe.cuisineType}</p>
             </div>
-        </>
+            <ContentHolder>
+                <ImgHolder>
+                    <PostBackground
+                        src={foundRecipe.image}
+                        alt={foundRecipe.label}
+                    />
+                </ImgHolder>
+
+                <div>
+                    <p>Ingredients:</p>
+                    <ul>
+                        {foundRecipe.ingredientLines.map((elem) => (
+                            <li key={elem.food}>{elem}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <p>Add to shopping list:</p>
+                    <IngredientsList
+                        ingredients={foundRecipe.ingredients}
+                        addItem={addToShoppingList}
+                        deleteItem={deleteFromShoppingList}
+                        itemList={list}
+                    />
+                </div>
+            </ContentHolder>
+        </PostContainer>
     );
 };
 
 export default PostDetails;
+
+/* <p>{foundRecipe.dishType}</p>
+<p>{foundRecipe.calories}</p>
+
+<p>{foundRecipe.mealType}</p>
+<p>{foundRecipe.totalWeight}</p>
+<p>{foundRecipe.source}</p> */

@@ -51,5 +51,12 @@ const FullImgMobile = styled.img`
     }
 `;
 
-export { PostBackground, PostParagraph, FullImgMobile };
+const ImgHolder = styled.div`
+    width: 100%;
+    height: auto;
+    max-width: 336px;
+    max-height: 336px;
+`;
+
+export { PostBackground, PostParagraph, FullImgMobile, ImgHolder };
 export default PostContainer;

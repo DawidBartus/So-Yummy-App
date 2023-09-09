@@ -41,6 +41,7 @@ const SubsectionHeader = styled.h3`
 `;
 
 const RecipeHeader = styled(SectionHeader)`
+    margin: 10px 0 20px 0;
     color: ${({ theme }) => theme.standardGreen};
 `;
 
