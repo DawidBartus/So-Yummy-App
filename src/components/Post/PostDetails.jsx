@@ -40,7 +40,7 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                     key={elem.food}
                 >
                     <img src={elem.image} alt="" width={50} height={50} />
-                    {elem.food}
+                    {`${elem.quantity} ${elem.measure} ${elem.food}`}
 
                     {itemList.some((element) => element.food === elem.food) ? (
                         <button
@@ -52,7 +52,12 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                     ) : (
                         <button
                             onClick={() =>
-                                addItem(elem.food, elem.quantity, elem.image)
+                                addItem(
+                                    elem.food,
+                                    elem.quantity,
+                                    elem.measure,
+                                    elem.image
+                                )
                             }
                         >
                             AddToList
@@ -79,55 +84,58 @@ const PostDetails = () => {
         }
     }, [recipe, navigate]);
 
-    const addToShoppingList = (food, quantity) => {
-        dispatch(addItem({ food, quantity }));
+    if (recipe === undefined) {
+        return;
+    }
+
+    const addToShoppingList = (food, quantity, measure, image) => {
+        dispatch(addItem({ food, quantity, measure, image }));
     };
 
     const deleteFromShoppingList = (food) => {
         dispatch(deleteItem(food));
     };
 
-    if (recipe === undefined) {
-        return;
-    }
-
+    const {
+        label,
+        url,
+        source,
+        cuisineType,
+        calories,
+        totalWeight,
+        image,
+        ingredientLines,
+        ingredients,
+    } = foundRecipe;
+    console.log(ingredients);
     return (
         <PostContainer>
             <div>
-                <RecipeHeader>{foundRecipe.label}</RecipeHeader>
+                <RecipeHeader>{label}</RecipeHeader>
                 <a
                     style={{ fontSize: 18, textDecoration: 'underline' }}
-                    href={foundRecipe.url}
+                    href={url}
                     rel="noreferrer"
                     target="_blank"
                 >
-                    Source: {foundRecipe.source}
+                    Source: {source}
                 </a>
 
-                <p>Cuisine type: {foundRecipe.cuisineType}</p>
+                <p>Cuisine type: {cuisineType}</p>
                 <p>
-                    {Math.floor(foundRecipe.calories)} kcal /{' '}
-                    {Math.floor(foundRecipe.totalWeight)}g
+                    {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g
                 </p>
-                <p>
-                    {Math.floor(
-                        (foundRecipe.calories * 100) / foundRecipe.totalWeight
-                    )}{' '}
-                    kcal / 100g
-                </p>
+                <p>{Math.floor((calories * 100) / totalWeight)} kcal / 100g</p>
             </div>
             <ContentHolder>
                 <ImgHolder>
-                    <PostBackground
-                        src={foundRecipe.image}
-                        alt={foundRecipe.label}
-                    />
+                    <PostBackground src={image} alt={label} />
                 </ImgHolder>
 
                 <div>
                     <p>Ingredients:</p>
                     <ul>
-                        {foundRecipe.ingredientLines.map((elem, index) => (
+                        {ingredientLines.map((elem, index) => (
                             <li key={index}>
                                 {index + 1}: {elem}
                             </li>
@@ -137,7 +145,7 @@ const PostDetails = () => {
                 <div>
                     <p>Add to shopping list:</p>
                     <IngredientsList
-                        ingredients={foundRecipe.ingredients}
+                        ingredients={ingredients}
                         addItem={addToShoppingList}
                         deleteItem={deleteFromShoppingList}
                         itemList={list}

@@ -1,6 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const listFromLocalStorage =
+    JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+const saveInLocalStorage = (item) => {
+    try {
+        localStorage.setItem('shoppingList', JSON.stringify(item));
+        console.log(listFromLocalStorage);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const deleteFromLocalStorage = (item) => {
+    try {
+        localStorage.removeItem('shoppingList');
+        saveInLocalStorage(item);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const initialState = listFromLocalStorage;
 
 const shoppingListSlice = createSlice({
     name: 'shoppingList',
@@ -8,9 +29,14 @@ const shoppingListSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             state.push(action.payload);
+            saveInLocalStorage(state);
         },
         deleteItem: (state, action) => {
-            return state.filter((element) => element.food !== action.payload);
+            const newState = state.filter(
+                (element) => element.food !== action.payload
+            );
+            deleteFromLocalStorage(newState);
+            return newState;
         },
     },
 });

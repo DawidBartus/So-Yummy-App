@@ -14,6 +14,7 @@ import CategoriesItems from './components/Categories/CategoriesItems';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import PostDetails from './components/Post/PostDetails';
+import ShoppingListPage from './pages/ShoppingListPage';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -24,8 +25,10 @@ function App() {
                 <Route path="/" element={<Welcome />} />
                 <Route path="/signUp" element={<RegisterForm />} />
                 <Route path="/signIn" element={<LogInPage />} />
+
                 <Route path="/home" element={<NavigationPage />}>
                     <Route path="/home" element={<HomePage />} />
+
                     <Route
                         path="/home/categories/"
                         element={<CategoriesPage />}
@@ -36,9 +39,18 @@ function App() {
                             element={<CategoriesItems />}
                         />
                     </Route>
+
                     <Route path="/home/search" element={<SearchPage />} />
+
+                    <Route
+                        path="/home/shoppingList"
+                        element={<ShoppingListPage />}
+                    />
+
                     <Route path="/home/Dev" element={<DevComponents />} />
+
                     <Route path="/home/:link" element={<PostDetails />} />
+
                     <Route path="*" element={<NotFound />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />

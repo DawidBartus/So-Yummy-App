@@ -44,7 +44,7 @@ const MainMenu = ({ style, close }) => {
                 </NavLinks>
             </li>
             <li>
-                <NavLinks href="#" onClick={close}>
+                <NavLinks to="/home/shoppingList" onClick={close}>
                     Shopping list
                 </NavLinks>
             </li>
