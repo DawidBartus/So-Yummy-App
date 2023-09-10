@@ -25,7 +25,6 @@ const ContentHolder = styled.div`
 `;
 
 const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
-    console.log(ingredients);
     return (
         <ul>
             {ingredients.map((elem) => (
@@ -106,6 +105,16 @@ const PostDetails = () => {
                 </a>
 
                 <p>Cuisine type: {foundRecipe.cuisineType}</p>
+                <p>
+                    {Math.floor(foundRecipe.calories)} kcal /{' '}
+                    {Math.floor(foundRecipe.totalWeight)}g
+                </p>
+                <p>
+                    {Math.floor(
+                        (foundRecipe.calories * 100) / foundRecipe.totalWeight
+                    )}{' '}
+                    kcal / 100g
+                </p>
             </div>
             <ContentHolder>
                 <ImgHolder>
@@ -118,8 +127,10 @@ const PostDetails = () => {
                 <div>
                     <p>Ingredients:</p>
                     <ul>
-                        {foundRecipe.ingredientLines.map((elem) => (
-                            <li key={elem.food}>{elem}</li>
+                        {foundRecipe.ingredientLines.map((elem, index) => (
+                            <li key={index}>
+                                {index + 1}: {elem}
+                            </li>
                         ))}
                     </ul>
                 </div>
@@ -140,8 +151,8 @@ const PostDetails = () => {
 export default PostDetails;
 
 /* <p>{foundRecipe.dishType}</p>
-<p>{foundRecipe.calories}</p>
+
 
 <p>{foundRecipe.mealType}</p>
-<p>{foundRecipe.totalWeight}</p>
+<p></p>
 <p>{foundRecipe.source}</p> */
