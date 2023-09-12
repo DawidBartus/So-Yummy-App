@@ -25,6 +25,11 @@ const ContentHolder = styled.div`
 `;
 
 const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
+    console.log('itemList', itemList);
+
+    if (itemList === undefined) {
+        return;
+    }
     return (
         <ul>
             {ingredients.map((elem) => (
@@ -77,6 +82,8 @@ const PostDetails = () => {
     const recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
     const foundRecipe = recipe?.find((elem) => elem.recipeId === link);
     const list = useSelector((state) => state.shoppingList);
+    // console.log('list', list);
+    // console.log('list from local', list.listFromLocalStorage);
 
     useEffect(() => {
         if (recipe === undefined) {
@@ -93,7 +100,12 @@ const PostDetails = () => {
     };
 
     const deleteFromShoppingList = (food) => {
+        console.log(food);
         dispatch(deleteItem(food));
+    };
+
+    const calcKcal = (kcal, totalWeight) => {
+        return Math.floor((kcal * 100) / totalWeight);
     };
 
     const {
@@ -107,7 +119,7 @@ const PostDetails = () => {
         ingredientLines,
         ingredients,
     } = foundRecipe;
-    console.log(ingredients);
+
     return (
         <PostContainer>
             <div>
@@ -125,7 +137,7 @@ const PostDetails = () => {
                 <p>
                     {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g
                 </p>
-                <p>{Math.floor((calories * 100) / totalWeight)} kcal / 100g</p>
+                <p>{calcKcal(calories, totalWeight)} kcal / 100g</p>
             </div>
             <ContentHolder>
                 <ImgHolder>
@@ -148,7 +160,7 @@ const PostDetails = () => {
                         ingredients={ingredients}
                         addItem={addToShoppingList}
                         deleteItem={deleteFromShoppingList}
-                        itemList={list}
+                        itemList={list.listFromLocalStorage}
                     />
                 </div>
             </ContentHolder>

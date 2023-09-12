@@ -6,9 +6,8 @@ const listFromLocalStorage =
 const saveInLocalStorage = (item) => {
     try {
         localStorage.setItem('shoppingList', JSON.stringify(item));
-        console.log(listFromLocalStorage);
     } catch (error) {
-        console.error(error);
+        throw new Error('Save item error:', error);
     }
 };
 
@@ -17,25 +16,35 @@ const deleteFromLocalStorage = (item) => {
         localStorage.removeItem('shoppingList');
         saveInLocalStorage(item);
     } catch (error) {
-        console.error(error);
+        throw new Error('Delete item error:', error);
     }
 };
 
-const initialState = listFromLocalStorage;
+const initialState = { listFromLocalStorage, lastDeleted: [] };
 
 const shoppingListSlice = createSlice({
     name: 'shoppingList',
     initialState,
     reducers: {
         addItem: (state, action) => {
-            state.push(action.payload);
-            saveInLocalStorage(state);
+            state.listFromLocalStorage.push(action.payload);
+            saveInLocalStorage(state.listFromLocalStorage);
         },
         deleteItem: (state, action) => {
-            const newState = state.filter(
-                (element) => element.food !== action.payload
-            );
-            deleteFromLocalStorage(newState);
+            const updatedLastDeleted = [...state.lastDeleted, action.payload];
+            if (updatedLastDeleted.length > 3) {
+                updatedLastDeleted.splice(0, updatedLastDeleted.length - 3);
+            }
+
+            const newState = {
+                ...state,
+                lastDeleted: updatedLastDeleted,
+                listFromLocalStorage: state.listFromLocalStorage.filter(
+                    (element) => element.food !== action.payload
+                ),
+            };
+
+            deleteFromLocalStorage(newState.listFromLocalStorage);
             return newState;
         },
     },
