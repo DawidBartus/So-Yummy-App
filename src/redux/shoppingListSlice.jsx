@@ -40,7 +40,7 @@ const shoppingListSlice = createSlice({
                 ...state,
                 lastDeleted: updatedLastDeleted,
                 listFromLocalStorage: state.listFromLocalStorage.filter(
-                    (element) => element.food !== action.payload
+                    (element) => element.food !== action.payload.food
                 ),
             };
 

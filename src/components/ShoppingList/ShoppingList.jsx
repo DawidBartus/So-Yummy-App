@@ -1,19 +1,32 @@
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItem } from '../../redux/shoppingListSlice';
+import { addItem, deleteItem } from '../../redux/shoppingListSlice';
 
-const List = ({ currentList, deleteItem }) => {
+const List = ({ currentList, listFunction, actionType }) => {
+    if (currentList.length === 0) {
+        return <p>List is empty</p>;
+    }
+
     return (
-        <ul>
-            {currentList.map((element) => (
-                <li key={element.food}>
-                    {element.food} {element.quantity} {element.measure}
-                    <button onClick={() => deleteItem(element.food)}>
-                        Delete
-                    </button>
-                </li>
-            ))}
-        </ul>
+        <>
+            <ul>
+                {currentList.map((element) => (
+                    <li key={element.food}>
+                        {element.food} {element.quantity} {element.measure}
+                        <button
+                            onClick={() =>
+                                listFunction(
+                                    element.food,
+                                    element.quantity,
+                                    element.measure
+                                )
+                            }
+                        >
+                            {actionType}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </>
     );
 };
 
@@ -22,22 +35,33 @@ const ShoppingList = () => {
     const shoppingList = useSelector((state) => state.shoppingList);
     const { listFromLocalStorage, lastDeleted } = shoppingList;
 
-    const handleDelete = (food) => {
-        dispatch(deleteItem(food));
+    const handleDelete = (food, quantity, measure) => {
+        dispatch(deleteItem({ food, quantity, measure }));
     };
 
-    // useEffect(() => {}, [shoppingList]);
-    console.log(listFromLocalStorage.length);
+    const addToShoppingList = (food, quantity, measure) => {
+        dispatch(addItem({ food, quantity, measure }));
+    };
+
     return (
         <>
-            {listFromLocalStorage.length >= 1 && (
+            <div>
+                <p>Shopping List:</p>
                 <List
                     currentList={listFromLocalStorage}
-                    deletedList={lastDeleted}
-                    deleteItem={handleDelete}
+                    actionType={'Delete'}
+                    listFunction={handleDelete}
                 />
-            )}
-            {!listFromLocalStorage.length >= 1 && <p>Add something</p>}
+            </div>
+
+            <div>
+                <p>Last deleted:</p>
+                <List
+                    currentList={lastDeleted}
+                    actionType={'Add'}
+                    listFunction={addToShoppingList} //change shopping store to update last deleted items
+                />
+            </div>
         </>
     );
 };

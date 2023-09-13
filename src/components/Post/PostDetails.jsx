@@ -25,8 +25,6 @@ const ContentHolder = styled.div`
 `;
 
 const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
-    console.log('itemList', itemList);
-
     if (itemList === undefined) {
         return;
     }
@@ -50,19 +48,20 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                     {itemList.some((element) => element.food === elem.food) ? (
                         <button
                             style={{ background: 'red' }}
-                            onClick={() => deleteItem(elem.food)}
+                            onClick={() =>
+                                deleteItem(
+                                    elem.food,
+                                    elem.quantity,
+                                    elem.measure
+                                )
+                            }
                         >
                             delete
                         </button>
                     ) : (
                         <button
                             onClick={() =>
-                                addItem(
-                                    elem.food,
-                                    elem.quantity,
-                                    elem.measure,
-                                    elem.image
-                                )
+                                addItem(elem.food, elem.quantity, elem.measure)
                             }
                         >
                             AddToList
@@ -82,8 +81,6 @@ const PostDetails = () => {
     const recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
     const foundRecipe = recipe?.find((elem) => elem.recipeId === link);
     const list = useSelector((state) => state.shoppingList);
-    // console.log('list', list);
-    // console.log('list from local', list.listFromLocalStorage);
 
     useEffect(() => {
         if (recipe === undefined) {
@@ -95,13 +92,12 @@ const PostDetails = () => {
         return;
     }
 
-    const addToShoppingList = (food, quantity, measure, image) => {
-        dispatch(addItem({ food, quantity, measure, image }));
+    const addToShoppingList = (food, quantity, measure) => {
+        dispatch(addItem({ food, quantity, measure }));
     };
 
-    const deleteFromShoppingList = (food) => {
-        console.log(food);
-        dispatch(deleteItem(food));
+    const deleteFromShoppingList = (food, quantity, measure) => {
+        dispatch(deleteItem(food, quantity, measure));
     };
 
     const calcKcal = (kcal, totalWeight) => {
