@@ -7,19 +7,19 @@ const TextParagraph = styled.p`
     font-style: normal;
 `;
 
-const BigParagraph = styled.p`
+const BigParagraph = styled(TextParagraph)`
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: -0.36px;
 `;
-const MediumParagraph = styled.p`
+const MediumParagraph = styled(TextParagraph)`
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: -0.24px;
 `;
-const SmallParagraph = styled.p`
+const SmallParagraph = styled(TextParagraph)`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;

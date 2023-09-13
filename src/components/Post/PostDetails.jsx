@@ -2,52 +2,39 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect } from 'react';
 import { RecipeHeader } from '../reusableComponents/Headers';
-import { ImgHolder, PostBackground } from './PostStyledElements';
-import { styled } from 'styled-components';
+import {
+    ContentHolder,
+    PostContainerDetails,
+    ImgHolder,
+    PostBackground,
+    DetailsListItem,
+} from './PostStyledElements';
 import { addItem, deleteItem } from '../../redux/shoppingListSlice';
-
-const PostContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    @media (min-width: 768px) {
-        width: 100%;
-        margin: 0 20px;
-    }
-`;
-const ContentHolder = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    @media (min-width: 768px) {
-        flex-direction: row;
-    }
-`;
+import { RoundedGreenToDark } from '../reusableComponents/Buttons';
+import { ListContainer } from '../ShoppingList/ShoppingListStyled';
+import { BigParagraph, MediumParagraph } from '../reusableComponents/Text';
 
 const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
     if (itemList === undefined) {
         return;
     }
-    return (
-        <ul>
-            {ingredients.map((elem) => (
-                <li
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        gap: 10,
-                        background: 'green',
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                    }}
-                    key={elem.food}
-                >
-                    <img src={elem.image} alt="" width={50} height={50} />
-                    {`${elem.quantity} ${elem.measure} ${elem.food}`}
 
+    return (
+        <ListContainer>
+            {ingredients.map((elem) => (
+                <DetailsListItem key={elem.food}>
+                    <img
+                        src={elem.image}
+                        alt={elem.food}
+                        width={50}
+                        height={50}
+                        style={{ borderRadius: '8px' }}
+                    />
+                    <MediumParagraph>
+                        {elem.quantity.toFixed(1)} {elem.measure} {elem.food}
+                    </MediumParagraph>
                     {itemList.some((element) => element.food === elem.food) ? (
-                        <button
-                            style={{ background: 'red' }}
+                        <RoundedGreenToDark
                             onClick={() =>
                                 deleteItem(
                                     elem.food,
@@ -57,19 +44,19 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                             }
                         >
                             delete
-                        </button>
+                        </RoundedGreenToDark>
                     ) : (
-                        <button
+                        <RoundedGreenToDark
                             onClick={() =>
                                 addItem(elem.food, elem.quantity, elem.measure)
                             }
                         >
                             AddToList
-                        </button>
+                        </RoundedGreenToDark>
                     )}
-                </li>
+                </DetailsListItem>
             ))}
-        </ul>
+        </ListContainer>
     );
 };
 
@@ -97,7 +84,7 @@ const PostDetails = () => {
     };
 
     const deleteFromShoppingList = (food, quantity, measure) => {
-        dispatch(deleteItem(food, quantity, measure));
+        dispatch(deleteItem({ food, quantity, measure }));
     };
 
     const calcKcal = (kcal, totalWeight) => {
@@ -117,7 +104,7 @@ const PostDetails = () => {
     } = foundRecipe;
 
     return (
-        <PostContainer>
+        <PostContainerDetails>
             <div>
                 <RecipeHeader>{label}</RecipeHeader>
                 <a
@@ -141,34 +128,27 @@ const PostDetails = () => {
                 </ImgHolder>
 
                 <div>
-                    <p>Ingredients:</p>
+                    <BigParagraph>Ingredients:</BigParagraph>
                     <ul>
                         {ingredientLines.map((elem, index) => (
                             <li key={index}>
-                                {index + 1}: {elem}
+                                <MediumParagraph>{elem}</MediumParagraph>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <div>
-                    <p>Add to shopping list:</p>
+                <ListContainer>
+                    <BigParagraph>Add to shopping list:</BigParagraph>
                     <IngredientsList
                         ingredients={ingredients}
                         addItem={addToShoppingList}
                         deleteItem={deleteFromShoppingList}
                         itemList={list.listFromLocalStorage}
                     />
-                </div>
+                </ListContainer>
             </ContentHolder>
-        </PostContainer>
+        </PostContainerDetails>
     );
 };
 
 export default PostDetails;
-
-/* <p>{foundRecipe.dishType}</p>
-
-
-<p>{foundRecipe.mealType}</p>
-<p></p>
-<p>{foundRecipe.source}</p> */

@@ -58,5 +58,49 @@ const ImgHolder = styled.div`
     max-height: 336px;
 `;
 
-export { PostBackground, PostParagraph, FullImgMobile, ImgHolder };
+const PostContainerDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media (min-width: 768px) {
+        width: 100%;
+        margin: 0 20px;
+    }
+`;
+const ContentHolder = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+`;
+const DetailsListItem = styled.li`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    transition: 500ms;
+    cursor: default;
+    border-radius: 8px;
+    padding: 4px 8px;
+    &:hover {
+        background-color: ${({ theme }) => theme.transparentBg};
+    }
+    @media (min-width: 1298px) {
+        flex-direction: row;
+    }
+`;
+
+export {
+    PostBackground,
+    PostParagraph,
+    FullImgMobile,
+    ImgHolder,
+    ContentHolder,
+    PostContainerDetails,
+    DetailsListItem,
+};
 export default PostContainer;

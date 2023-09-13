@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, deleteItem } from '../../redux/shoppingListSlice';
+import { RoundedGreenToDark } from '../reusableComponents/Buttons';
+import ListItem, { ListContainer, ListHolder } from './ShoppingListStyled';
+import { SubsectionHeader } from '../reusableComponents/Headers';
 
 const List = ({ currentList, listFunction, actionType }) => {
     if (currentList.length === 0) {
@@ -7,26 +10,25 @@ const List = ({ currentList, listFunction, actionType }) => {
     }
 
     return (
-        <>
-            <ul>
-                {currentList.map((element) => (
-                    <li key={element.food}>
-                        {element.food} {element.quantity} {element.measure}
-                        <button
-                            onClick={() =>
-                                listFunction(
-                                    element.food,
-                                    element.quantity,
-                                    element.measure
-                                )
-                            }
-                        >
-                            {actionType}
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </>
+        <ListHolder>
+            {currentList.map((element, index) => (
+                <ListItem key={element.food + index}>
+                    {element.food} {element.quantity} {element.measure}
+                    <RoundedGreenToDark
+                        style={{ padding: '8px 20px' }}
+                        onClick={() =>
+                            listFunction(
+                                element.food,
+                                element.quantity,
+                                element.measure
+                            )
+                        }
+                    >
+                        {actionType}
+                    </RoundedGreenToDark>
+                </ListItem>
+            ))}
+        </ListHolder>
     );
 };
 
@@ -45,23 +47,26 @@ const ShoppingList = () => {
 
     return (
         <>
-            <div>
-                <p>Shopping List:</p>
+            <ListContainer>
+                <SubsectionHeader style={{ margin: '30px 0' }}>
+                    Shopping List:
+                </SubsectionHeader>
                 <List
                     currentList={listFromLocalStorage}
                     actionType={'Delete'}
                     listFunction={handleDelete}
                 />
-            </div>
-
-            <div>
-                <p>Last deleted:</p>
+            </ListContainer>
+            <ListContainer>
+                <SubsectionHeader style={{ margin: '30px 0' }}>
+                    Last deleted:
+                </SubsectionHeader>
                 <List
                     currentList={lastDeleted}
                     actionType={'Add'}
-                    listFunction={addToShoppingList} //change shopping store to update last deleted items
+                    listFunction={addToShoppingList}
                 />
-            </div>
+            </ListContainer>
         </>
     );
 };

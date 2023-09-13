@@ -11,6 +11,7 @@ const HeaderSection = styled.header`
 
 const MainSection = styled.main`
     width: 100%;
+    min-height: 50vh;
     transition: background-color 1s ease;
     background-color: ${({ theme }) => theme.mainBg};
     display: flex;
