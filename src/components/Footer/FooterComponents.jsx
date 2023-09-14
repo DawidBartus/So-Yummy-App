@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import { BlackToGreenSection } from '../reusableComponents/Sections';
 import { StyledLink } from '../reusableComponents/Buttons';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../reusableComponents/FlexContainer';
 
 const FooterSection = styled(BlackToGreenSection)`
     transition: 1s ease;

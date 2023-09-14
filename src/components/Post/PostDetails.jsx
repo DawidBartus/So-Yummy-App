@@ -8,9 +8,13 @@ import {
     ImgHolder,
     PostBackground,
     DetailsListItem,
+    ListDisc,
 } from './PostStyledElements';
 import { addItem, deleteItem } from '../../redux/shoppingListSlice';
-import { RoundedGreenToDark } from '../reusableComponents/Buttons';
+import {
+    PageOutsideLink,
+    RoundedGreenToDark,
+} from '../reusableComponents/Buttons';
 import { ListContainer } from '../ShoppingList/ShoppingListStyled';
 import { BigParagraph, MediumParagraph } from '../reusableComponents/Text';
 
@@ -20,7 +24,7 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
     }
 
     return (
-        <ListContainer>
+        <ul style={{ marginLeft: 20 }}>
             {ingredients.map((elem) => (
                 <DetailsListItem key={elem.food}>
                     <img
@@ -56,7 +60,7 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                     )}
                 </DetailsListItem>
             ))}
-        </ListContainer>
+        </ul>
     );
 };
 
@@ -107,20 +111,23 @@ const PostDetails = () => {
         <PostContainerDetails>
             <div>
                 <RecipeHeader>{label}</RecipeHeader>
-                <a
+
+                <PageOutsideLink
                     style={{ fontSize: 18, textDecoration: 'underline' }}
                     href={url}
                     rel="noreferrer"
                     target="_blank"
                 >
                     Source: {source}
-                </a>
+                </PageOutsideLink>
 
-                <p>Cuisine type: {cuisineType}</p>
-                <p>
+                <MediumParagraph>Cuisine type: {cuisineType}</MediumParagraph>
+                <MediumParagraph>
                     {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g
-                </p>
-                <p>{calcKcal(calories, totalWeight)} kcal / 100g</p>
+                </MediumParagraph>
+                <MediumParagraph>
+                    {calcKcal(calories, totalWeight)} kcal / 100g
+                </MediumParagraph>
             </div>
             <ContentHolder>
                 <ImgHolder>
@@ -128,17 +135,21 @@ const PostDetails = () => {
                 </ImgHolder>
 
                 <div>
-                    <BigParagraph>Ingredients:</BigParagraph>
-                    <ul>
+                    <BigParagraph style={{ marginBottom: 30 }}>
+                        Ingredients:
+                    </BigParagraph>
+                    <ul style={{ paddingLeft: 20 }}>
                         {ingredientLines.map((elem, index) => (
-                            <li key={index}>
+                            <ListDisc key={index}>
                                 <MediumParagraph>{elem}</MediumParagraph>
-                            </li>
+                            </ListDisc>
                         ))}
                     </ul>
                 </div>
                 <ListContainer>
-                    <BigParagraph>Add to shopping list:</BigParagraph>
+                    <BigParagraph style={{ marginBottom: 30 }}>
+                        Add to shopping list:
+                    </BigParagraph>
                     <IngredientsList
                         ingredients={ingredients}
                         addItem={addToShoppingList}

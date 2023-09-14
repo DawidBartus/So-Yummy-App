@@ -4,7 +4,7 @@ import { fetchSearchQuery } from '../../redux/recipesSlice';
 import Post from '../Post/Post';
 import { FixedLoader } from '../reusableComponents/Loader';
 import { SectionHeader } from '../reusableComponents/Headers';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../reusableComponents/FlexContainer';
 
 const Search = () => {
     const [query, setQuery] = useState('');

@@ -1,4 +1,4 @@
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../reusableComponents/FlexContainer';
 import { BlackToGreenButton } from '../reusableComponents/Buttons';
 import { EmailInput } from '../reusableComponents/Inputs';
 import { CompanyV2Icon } from '../reusableComponents/CompanyIcon';

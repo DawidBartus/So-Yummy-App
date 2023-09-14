@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+const PageOutsideLink = styled.a`
+    font-size: 16px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: 500ms;
+    color: ${({ theme }) => theme.mainTextColor};
+    &:hover {
+        color: #8baa36;
+    }
+`;
+
 // styled Link
 // base
 const Button = styled(Link)`
@@ -174,5 +187,6 @@ export {
     NavLinks,
     GreenLink,
     BlackToGreenButton,
+    PageOutsideLink,
 };
 export default Button;

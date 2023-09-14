@@ -94,6 +94,22 @@ const DetailsListItem = styled.li`
     }
 `;
 
+const ListDisc = styled.li`
+    padding-bottom: 10px;
+    & p::before {
+        content: '';
+        position: relative;
+        background-color: green;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        left: -5px;
+        top: -3px;
+        display: inline-block;
+        margin-left: -1em;
+    }
+`;
+
 export {
     PostBackground,
     PostParagraph,
@@ -102,5 +118,6 @@ export {
     ContentHolder,
     PostContainerDetails,
     DetailsListItem,
+    ListDisc,
 };
 export default PostContainer;

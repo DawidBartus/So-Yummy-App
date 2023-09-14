@@ -1,10 +1,11 @@
 import { styled } from 'styled-components';
-import FlexContainer from '../FlexContainer';
+
 import Post from '../Post/Post';
 import { GreenLink } from '../reusableComponents/Buttons';
 import { SubsectionHeader } from '../reusableComponents/Headers';
 import { useSelector } from 'react-redux';
 import Loader from '../reusableComponents/Loader';
+import FlexContainer from '../reusableComponents/FlexContainer';
 
 const PostWrapper = styled(FlexContainer)`
     gap: 10;

@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import FlexContainer from '../components/FlexContainer';
+
 import HomeSectionElement from '../components/Home/Home';
 import { useEffect } from 'react';
 import { fetchStartValue } from '../redux/recipesSlice';
+import FlexContainer from '../components/reusableComponents/FlexContainer';
 
 const HomePage = () => {
     const dispatch = useDispatch();

@@ -7,7 +7,7 @@ import {
     MirrorFormButton,
 } from '../reusableComponents/Buttons';
 import { useState } from 'react';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../reusableComponents/FlexContainer';
 import TextParagraph from '../reusableComponents/Text';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
