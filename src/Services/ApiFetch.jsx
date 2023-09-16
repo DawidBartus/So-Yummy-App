@@ -4,6 +4,25 @@ import { nanoid } from 'nanoid';
 const baseKey = '36c3ac425b9892779965b003d89cde16';
 const apiId = '80ef1424';
 
+const changeObject = (object, query = 'found') => {
+    return {
+        label: object.label,
+        images: object.images.REGULAR,
+        url: object.url,
+        uri: object.uri,
+        source: object.source,
+        yield: object.yield,
+        ingredientLines: object.ingredientLines,
+        ingredients: object.ingredients,
+        calories: object.calories,
+        totalWeight: object.totalWeight,
+        cousineType: object.cousineType,
+        mealType: object.mealType,
+        cuisineType: object.cuisineType,
+        recipeId: `${query}_${nanoid()}`,
+    };
+};
+
 const fetchRecipes = async (query) => {
     try {
         const response = await axios(
@@ -11,22 +30,7 @@ const fetchRecipes = async (query) => {
         );
 
         const responseArray = response.data.hits.map(({ recipe }) => {
-            const newObject = {
-                label: recipe.label,
-                images: recipe.images.REGULAR,
-                url: recipe.url,
-                source: recipe.source,
-                yield: recipe.yield,
-                ingredientLines: recipe.ingredientLines,
-                ingredients: recipe.ingredients,
-                calories: recipe.calories,
-                totalWeight: recipe.totalWeight,
-                cousineType: recipe.cousineType,
-                mealType: recipe.mealType,
-                recipeId: `${query}_${nanoid()}`,
-            };
-
-            return newObject;
+            return changeObject(recipe, query);
         });
 
         return responseArray;

@@ -7,80 +7,44 @@ import {
     PostContainerDetails,
     ImgHolder,
     PostBackground,
-    DetailsListItem,
-    ListDisc,
 } from './PostStyledElements';
 import { addItem, deleteItem } from '../../redux/shoppingListSlice';
-import {
-    PageOutsideLink,
-    RoundedGreenToDark,
-} from '../reusableComponents/Buttons';
+import { PageOutsideLink } from '../reusableComponents/Buttons';
 import { ListContainer } from '../ShoppingList/ShoppingListStyled';
 import { BigParagraph, MediumParagraph } from '../reusableComponents/Text';
-
-const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
-    if (itemList === undefined) {
-        return;
-    }
-
-    return (
-        <ul style={{ marginLeft: 20 }}>
-            {ingredients.map((elem) => (
-                <DetailsListItem key={elem.food}>
-                    <img
-                        src={elem.image}
-                        alt={elem.food}
-                        width={50}
-                        height={50}
-                        style={{ borderRadius: '8px' }}
-                    />
-                    <MediumParagraph>
-                        {elem.quantity.toFixed(1)} {elem.measure} {elem.food}
-                    </MediumParagraph>
-                    {itemList.some((element) => element.food === elem.food) ? (
-                        <RoundedGreenToDark
-                            onClick={() =>
-                                deleteItem(
-                                    elem.food,
-                                    elem.quantity,
-                                    elem.measure
-                                )
-                            }
-                        >
-                            delete
-                        </RoundedGreenToDark>
-                    ) : (
-                        <RoundedGreenToDark
-                            onClick={() =>
-                                addItem(elem.food, elem.quantity, elem.measure)
-                            }
-                        >
-                            AddToList
-                        </RoundedGreenToDark>
-                    )}
-                </DetailsListItem>
-            ))}
-        </ul>
-    );
-};
+import IngredientsList from './IngredientsList';
+import StepList from './StepList';
 
 const PostDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { link } = useParams();
     const id = link.split('_')[0].toLocaleLowerCase();
-    const recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
+    let recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
     const foundRecipe = recipe?.find((elem) => elem.recipeId === link);
     const list = useSelector((state) => state.shoppingList);
 
+    useEffect(
+        () =>
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            }),
+        []
+    );
+
     useEffect(() => {
         if (recipe === undefined) {
-            navigate('notFound');
+            setTimeout(() => navigate('/home'), 2000);
         }
     }, [recipe, navigate]);
 
     if (recipe === undefined) {
-        return;
+        return (
+            <PostContainerDetails>
+                <RecipeHeader>Page not found</RecipeHeader>
+            </PostContainerDetails>
+        );
     }
 
     const addToShoppingList = (food, quantity, measure) => {
@@ -92,7 +56,7 @@ const PostDetails = () => {
     };
 
     const calcKcal = (kcal, totalWeight) => {
-        return Math.floor((kcal * 100) / totalWeight);
+        return Math.ceil((kcal * 100) / totalWeight);
     };
 
     const {
@@ -123,7 +87,7 @@ const PostDetails = () => {
 
                 <MediumParagraph>Cuisine type: {cuisineType}</MediumParagraph>
                 <MediumParagraph>
-                    {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g {}
+                    {Math.ceil(calories)} kcal / {Math.ceil(totalWeight)}g {}
                 </MediumParagraph>
                 <MediumParagraph>
                     {calcKcal(calories, totalWeight)} kcal / 100g
@@ -134,18 +98,8 @@ const PostDetails = () => {
                     <PostBackground src={images.url} alt={label} />
                 </ImgHolder>
 
-                <div>
-                    <BigParagraph style={{ marginBottom: 30 }}>
-                        Ingredients:
-                    </BigParagraph>
-                    <ul style={{ paddingLeft: 20 }}>
-                        {ingredientLines.map((elem, index) => (
-                            <ListDisc key={index}>
-                                <MediumParagraph>{elem}</MediumParagraph>
-                            </ListDisc>
-                        ))}
-                    </ul>
-                </div>
+                <StepList stepArray={ingredientLines} />
+
                 <ListContainer>
                     <BigParagraph style={{ marginBottom: 30 }}>
                         Add to shopping list:

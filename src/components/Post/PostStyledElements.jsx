@@ -22,6 +22,7 @@ const PostBackground = styled.img`
     background-size: contain;
     width: 100%;
     height: 100%;
+    min-width: 300px;
     border-radius: 8px;
     overflow: hidden;
     &:hover {
@@ -61,17 +62,21 @@ const ImgHolder = styled.div`
 const PostContainerDetails = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
-    @media (min-width: 768px) {
+    @media (min-width: 968px) {
+        align-items: flex-start;
         width: 100%;
         margin: 0 20px;
     }
 `;
 const ContentHolder = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
-    @media (min-width: 768px) {
+    @media (min-width: 968px) {
         flex-direction: row;
     }
 `;
@@ -85,6 +90,7 @@ const DetailsListItem = styled.li`
     transition: 500ms;
     cursor: default;
     border-radius: 8px;
+    margin-top: 10px;
     padding: 4px 8px;
     &:hover {
         background-color: ${({ theme }) => theme.transparentBg};

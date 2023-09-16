@@ -65,11 +65,13 @@ const Footer = () => {
                         <WhiteLink>Add recipes</WhiteLink>
                         <WhiteLink>My recipes</WhiteLink>
                         <WhiteLink>Favorite</WhiteLink>
-                        <WhiteLink>Shopping list</WhiteLink>
+                        <WhiteLink to={'/home/shoppingList'}>
+                            Shopping list
+                        </WhiteLink>
                     </LinkContainer>
 
                     <FormContainer>
-                        <NewsletterSection action="" onSubmit={handleSubscribe}>
+                        <NewsletterSection onSubmit={handleSubscribe}>
                             <DisplayDiv>
                                 <BigParagraph style={{ color: '#fff' }}>
                                     Subscribe to our Newsletter
