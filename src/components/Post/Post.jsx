@@ -14,6 +14,7 @@ const LinkWrapper = styled(Link)`
 
 const Post = ({ props }) => {
     let { label, images, image, recipeId } = props;
+
     const [style, setStyle] = useState(100);
 
     const handleLoad = () => {
@@ -29,7 +30,7 @@ const Post = ({ props }) => {
                     onLoad={handleLoad}
                 >
                     <PostBackground
-                        src={images.REGULAR.url || image}
+                        src={images.url || image}
                         data-close="close"
                     />
                     <PostParagraph>{label}</PostParagraph>

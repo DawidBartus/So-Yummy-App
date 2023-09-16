@@ -11,7 +11,22 @@ const fetchRecipes = async (query) => {
         );
 
         const responseArray = response.data.hits.map(({ recipe }) => {
-            return { ...recipe, recipeId: `${query}_${nanoid()}` };
+            const newObject = {
+                label: recipe.label,
+                images: recipe.images.REGULAR,
+                url: recipe.url,
+                source: recipe.source,
+                yield: recipe.yield,
+                ingredientLines: recipe.ingredientLines,
+                ingredients: recipe.ingredients,
+                calories: recipe.calories,
+                totalWeight: recipe.totalWeight,
+                cousineType: recipe.cousineType,
+                mealType: recipe.mealType,
+                recipeId: `${query}_${nanoid()}`,
+            };
+
+            return newObject;
         });
 
         return responseArray;

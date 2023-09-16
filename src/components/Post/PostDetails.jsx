@@ -102,7 +102,7 @@ const PostDetails = () => {
         cuisineType,
         calories,
         totalWeight,
-        image,
+        images,
         ingredientLines,
         ingredients,
     } = foundRecipe;
@@ -123,7 +123,7 @@ const PostDetails = () => {
 
                 <MediumParagraph>Cuisine type: {cuisineType}</MediumParagraph>
                 <MediumParagraph>
-                    {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g
+                    {Math.floor(calories)} kcal / {Math.floor(totalWeight)}g {}
                 </MediumParagraph>
                 <MediumParagraph>
                     {calcKcal(calories, totalWeight)} kcal / 100g
@@ -131,7 +131,7 @@ const PostDetails = () => {
             </div>
             <ContentHolder>
                 <ImgHolder>
-                    <PostBackground src={image} alt={label} />
+                    <PostBackground src={images.url} alt={label} />
                 </ImgHolder>
 
                 <div>
