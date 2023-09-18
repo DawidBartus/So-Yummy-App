@@ -1,27 +1,35 @@
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategoriesRecipes } from '../../redux/recipesSlice';
+import {
+    fetchCategoriesRecipes,
+    fetchMoreRecipes,
+} from '../../redux/recipesSlice';
 import Post from '../Post/Post';
 import Loader from '../reusableComponents/Loader';
 
 const CategoriesItems = () => {
     const { id } = useParams();
-    const newIid = id.toLocaleLowerCase();
+    const newId = id.toLocaleLowerCase();
     const dispatch = useDispatch();
     const recipes = useSelector((state) => state.recipes.categoriesRecipes);
-    const pageRecipes = recipes[newIid] || [];
+    const pageRecipes = recipes[newId] || [];
     const isPending = useSelector((store) => store.recipes.isPending);
+    const nextPage = useSelector((state) => state.recipes.nextPage);
 
     useEffect(() => {
         try {
             if (pageRecipes.length === 0) {
-                dispatch(fetchCategoriesRecipes(newIid));
+                dispatch(fetchCategoriesRecipes(newId));
             }
         } catch (error) {
             console.error(error);
         }
-    }, [newIid, dispatch, pageRecipes.length]);
+    }, [newId, dispatch, pageRecipes.length]);
+
+    const loadMore = () => {
+        dispatch(fetchMoreRecipes({ nextPage, newId }));
+    };
 
     return (
         <>
@@ -30,6 +38,7 @@ const CategoriesItems = () => {
             {pageRecipes.map((elem, index) => (
                 <Post key={index} props={elem} />
             ))}
+            <button onClick={() => loadMore()}>Next Page</button>
         </>
     );
 };

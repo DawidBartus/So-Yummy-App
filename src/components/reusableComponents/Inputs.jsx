@@ -1,6 +1,7 @@
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { styled } from 'styled-components';
+import { RoundedGreenToDark } from './Buttons';
 
 const FormContainer = styled.form`
     display: flex;
@@ -60,6 +61,12 @@ const InputHolder = styled.div`
     min-width: 150px;
     max-width: 400px;
 `;
+const InputFormHolder = styled.form`
+    position: relative;
+    width: 100%;
+    min-width: 150px;
+    max-width: 400px;
+`;
 
 const Icon = styled(FontAwesomeIcon)`
     width: 12px;
@@ -74,6 +81,41 @@ const Icon = styled(FontAwesomeIcon)`
         height: auto;
     }
 `;
+
+const Search = styled.input`
+    transition: 500ms;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    min-width: 150px;
+    max-width: 400px;
+    padding: 14px 10px;
+    border-radius: 24px 44px;
+    border: 0px;
+    outline: 1px solid #f0f0f0;
+    &:focus-within {
+        outline: 1px solid ${({ theme }) => theme.standardGreen};
+    }
+`;
+const SearchButton = styled(RoundedGreenToDark)`
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px 30px;
+    &:hover {
+        border-radius: 24px 44px;
+    }
+`;
+
+const SearchForm = ({ formId, inputChange, formSubmit }) => {
+    return (
+        <InputFormHolder onSubmit={formSubmit} id={formId}>
+            <Search type="text" placeholder="Find" onChange={inputChange} />
+            <SearchButton type="submit">Search</SearchButton>
+        </InputFormHolder>
+    );
+};
 
 const NameInput = ({ setInputName }) => {
     return (
@@ -122,7 +164,12 @@ const PasswordInput = ({ setInputPassword }) => {
 };
 
 // Test - go to /home/Dev
-const UniversalInput = ({ setInput, placeholder, inputId, inputType }) => {
+const UniversalInput = ({
+    setInput,
+    placeholder,
+    inputType,
+    inputId = inputType,
+}) => {
     const icon = () => {
         if (inputType === 'password') {
             return faLock;
@@ -152,5 +199,12 @@ const UniversalInput = ({ setInput, placeholder, inputId, inputType }) => {
     );
 };
 
-export { FormContainer, NameInput, EmailInput, PasswordInput, UniversalInput };
+export {
+    FormContainer,
+    NameInput,
+    EmailInput,
+    PasswordInput,
+    UniversalInput,
+    SearchForm,
+};
 export default MainInput;

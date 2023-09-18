@@ -33,11 +33,25 @@ const fetchRecipes = async (query) => {
             return changeObject(recipe, query);
         });
 
-        return responseArray;
+        const nextPage = response.data._links.next.href;
+
+        return { responseArray, nextPage };
     } catch (error) {
         console.error(error);
         return [];
     }
+};
+
+const fetchMore = async (link, query) => {
+    const response = await axios(link);
+
+    const responseArray = response.data.hits.map(({ recipe }) => {
+        return changeObject(recipe, query);
+    });
+
+    const loadMore = response.data._links.next.href;
+
+    return { responseArray, loadMore };
 };
 
 const firstApiFetch = async () => {
@@ -45,9 +59,13 @@ const firstApiFetch = async () => {
     let vegan = await fetchRecipes('Vegan');
     let desserts = await fetchRecipes('Desserts');
 
-    const results = { breakfast, vegan, desserts };
+    const recipeArray = {
+        breakfast: breakfast.responseArray,
+        vegan: vegan.responseArray,
+        desserts: desserts.responseArray,
+    };
 
-    return results;
+    return recipeArray;
 };
 
 const fetchByUri = async ({ uri }) => {
@@ -57,5 +75,5 @@ const fetchByUri = async ({ uri }) => {
 
     return result;
 };
-export { fetchRecipes, fetchByUri };
+export { fetchRecipes, fetchByUri, fetchMore };
 export default firstApiFetch;

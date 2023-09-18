@@ -20,8 +20,15 @@ const PostDetails = () => {
     const dispatch = useDispatch();
     const { link } = useParams();
     const id = link.split('_')[0].toLocaleLowerCase();
-    let recipe = useSelector((state) => state.recipes.categoriesRecipes[id]);
-    const foundRecipe = recipe?.find((elem) => elem.recipeId === link);
+
+    const recipe = useSelector(
+        (state) => state.recipes.categoriesRecipes[id]
+    )?.find((elem) => elem.recipeId === link);
+    const searchRecipe = useSelector(
+        (state) => state.recipes.foundRecipes
+    )?.find((elem) => elem.recipeId === link);
+
+    const foundRecipe = recipe || searchRecipe;
     const list = useSelector((state) => state.shoppingList);
 
     useEffect(
@@ -34,12 +41,12 @@ const PostDetails = () => {
     );
 
     useEffect(() => {
-        if (recipe === undefined) {
+        if (foundRecipe === undefined) {
             setTimeout(() => navigate('/home'), 2000);
         }
-    }, [recipe, navigate]);
+    }, [foundRecipe, navigate]);
 
-    if (recipe === undefined) {
+    if (foundRecipe === undefined) {
         return (
             <PostContainerDetails>
                 <RecipeHeader>Page not found</RecipeHeader>

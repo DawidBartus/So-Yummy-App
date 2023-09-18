@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearchQuery } from '../../redux/recipesSlice';
 import Post from '../Post/Post';
-import { FixedLoader } from '../reusableComponents/Loader';
+import Loader from '../reusableComponents/Loader';
 import { SectionHeader } from '../reusableComponents/Headers';
-import FlexContainer from '../reusableComponents/FlexContainer';
+import { SearchForm } from '../reusableComponents/Inputs';
+import { SecondaryOutlet } from '../reusableComponents/Sections';
 
 const Search = () => {
     const [query, setQuery] = useState('');
@@ -21,6 +22,7 @@ const Search = () => {
         if (query === '') {
             return;
         }
+
         dispatch(fetchSearchQuery(query));
     };
 
@@ -29,26 +31,32 @@ const Search = () => {
             <section
                 style={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
                     flexDirection: 'column',
+                    width: '100%',
+                    gap: 30,
                 }}
             >
-                <SectionHeader>Search</SectionHeader>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        id="query"
-                        onChange={setInputValue}
-                    ></input>
-                    <button type="submit">Search</button>
-                </form>
-                <FlexContainer style={{ flexWrap: 'wrap', gap: 20 }}>
+                <SectionHeader>Search: {query && query}</SectionHeader>
+
+                <SearchForm
+                    formId={'query'}
+                    inputChange={setInputValue}
+                    formSubmit={handleSubmit}
+                />
+
+                <SecondaryOutlet style={{ flexWrap: 'wrap', gap: 20 }}>
+                    {isPending && (
+                        <div style={{ width: '100%' }}>
+                            <Loader />
+                        </div>
+                    )}
+
                     {foundRecipes.map((element, index) => (
                         <Post key={index} props={element} />
                     ))}
-                </FlexContainer>
+                </SecondaryOutlet>
             </section>
-            {isPending && <FixedLoader />}
         </>
     );
 };
