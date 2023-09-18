@@ -10,7 +10,7 @@ const CategoriesPage = () => {
                 <SectionHeader>Categories</SectionHeader>
             </div>
             <CategoriesSlider />
-            <SecondaryOutlet>
+            <SecondaryOutlet style={{ position: 'relative' }}>
                 <Outlet />
             </SecondaryOutlet>
         </>

@@ -7,6 +7,13 @@ import {
 } from '../../redux/recipesSlice';
 import Post from '../Post/Post';
 import Loader from '../reusableComponents/Loader';
+import { FormButton } from '../reusableComponents/Buttons';
+import styled from 'styled-components';
+
+const PaginationButton = styled(FormButton)`
+    position: absolute;
+    bottom: -40px;
+`;
 
 const CategoriesItems = () => {
     const { id } = useParams();
@@ -16,6 +23,15 @@ const CategoriesItems = () => {
     const pageRecipes = recipes[newId] || [];
     const isPending = useSelector((store) => store.recipes.isPending);
     const nextPage = useSelector((state) => state.recipes.nextPage);
+
+    useEffect(
+        () =>
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            }),
+        []
+    );
 
     useEffect(() => {
         try {
@@ -38,7 +54,12 @@ const CategoriesItems = () => {
             {pageRecipes.map((elem, index) => (
                 <Post key={index} props={elem} />
             ))}
-            <button onClick={() => loadMore()}>Next Page</button>
+
+            {!isPending && (
+                <PaginationButton onClick={() => loadMore()}>
+                    Next Page
+                </PaginationButton>
+            )}
         </>
     );
 };

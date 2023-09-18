@@ -60,7 +60,7 @@ const SecondaryOutlet = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    min-height: 20vh;
+    min-height: 30vh;
     box-sizing: border-box;
 `;
 

@@ -41,8 +41,7 @@ const fetchMoreRecipes = createAsyncThunk(
     'recipes/fetchMore',
     async ({ nextPage, newId }, thunkApi) => {
         try {
-            const response = await fetchMore(nextPage);
-            console.log(response);
+            const response = await fetchMore(nextPage, newId);
             const { responseArray, loadMore } = response;
             return { responseArray, loadMore, newId };
         } catch (error) {
@@ -94,7 +93,6 @@ const recipesSlice = createSlice({
                 state.isPending = false;
                 const { responseArray, loadMore, newId } = action.payload;
                 state.nextPage = loadMore;
-                console.log(loadMore);
                 state.categoriesRecipes[newId] = [
                     ...state.categoriesRecipes[newId],
                     ...responseArray,
