@@ -65,7 +65,13 @@ const firstApiFetch = async () => {
         desserts: desserts.responseArray,
     };
 
-    return recipeArray;
+    const nextPage = {
+        breakfast: breakfast.nextPage,
+        vegan: vegan.nextPage,
+        desserts: desserts.nextPage,
+    };
+
+    return { recipeArray, nextPage };
 };
 
 const fetchByUri = async ({ uri }) => {

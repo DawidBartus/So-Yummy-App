@@ -54,7 +54,7 @@ const initialState = {
     isPending: false,
     categoriesRecipes: {},
     foundRecipes: [],
-    nextPage: [],
+    nextPage: {},
 };
 
 const recipesSlice = createSlice({
@@ -77,36 +77,39 @@ const recipesSlice = createSlice({
             })
             .addCase(fetchStartValue.fulfilled, (state, action) => {
                 state.isPending = false;
-                state.categoriesRecipes = action.payload;
+                const { recipeArray, nextPage } = action.payload;
+                for (const key in nextPage) {
+                    state.nextPage[key] = nextPage[key];
+                }
+                state.categoriesRecipes = recipeArray;
             })
             .addCase(fetchCategoriesRecipes.fulfilled, (state, action) => {
                 state.isPending = false;
                 const { response, id } = action.payload;
-                state.nextPage = response.nextPage;
+                state.nextPage[id] = response.nextPage;
                 state.categoriesRecipes[id] = response.responseArray;
             })
             .addCase(fetchSearchQuery.fulfilled, (state, action) => {
                 state.isPending = false;
-                state.foundRecipes = action.payload;
+                state.foundRecipes = action.payload.responseArray;
             })
             .addCase(fetchMoreRecipes.fulfilled, (state, action) => {
                 state.isPending = false;
                 const { responseArray, loadMore, newId } = action.payload;
-                state.nextPage = loadMore;
+                state.nextPage[newId] = loadMore;
                 state.categoriesRecipes[newId] = [
                     ...state.categoriesRecipes[newId],
                     ...responseArray,
                 ];
             })
             .addCase(fetchStartValue.rejected, (state, _) => {
-                state.categoriesRecipes = [];
+                state.isPending = false;
             })
             .addCase(fetchCategoriesRecipes.rejected, (state, action) => {
-                state.nextPage = [];
-                state.categoriesRecipes[action.id] = [];
+                state.isPending = false;
             })
             .addCase(fetchSearchQuery.rejected, (state, _) => {
-                state.foundRecipes = [];
+                state.isPending = false;
             });
     },
 });

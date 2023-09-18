@@ -22,7 +22,7 @@ const CategoriesItems = () => {
     const recipes = useSelector((state) => state.recipes.categoriesRecipes);
     const pageRecipes = recipes[newId] || [];
     const isPending = useSelector((store) => store.recipes.isPending);
-    const nextPage = useSelector((state) => state.recipes.nextPage);
+    const nextPage = useSelector((state) => state.recipes.nextPage[newId]);
 
     useEffect(
         () =>
