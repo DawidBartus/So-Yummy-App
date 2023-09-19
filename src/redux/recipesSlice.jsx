@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import firstApiFetch, { fetchMore, fetchRecipes } from '../Services/ApiFetch';
+import firstApiFetch, {
+    fetchByUri,
+    fetchMore,
+    fetchRecipes,
+} from '../Services/ApiFetch';
 
 const fetchStartValue = createAsyncThunk(
     'recipes/fetchStartValue',
@@ -50,11 +54,24 @@ const fetchMoreRecipes = createAsyncThunk(
     }
 );
 
+const fetchRecipeData = createAsyncThunk(
+    'recipes/fetchRecipeData',
+    async (uri, thunkApi) => {
+        try {
+            const response = fetchByUri(uri);
+            return response;
+        } catch (error) {
+            return thunkApi.rejectWithValue(error);
+        }
+    }
+);
+
 const initialState = {
     isPending: false,
     categoriesRecipes: {},
     foundRecipes: [],
     nextPage: {},
+    lastOpen: undefined,
 };
 
 const recipesSlice = createSlice({
@@ -73,6 +90,9 @@ const recipesSlice = createSlice({
                 state.isPending = true;
             })
             .addCase(fetchMoreRecipes.pending, (state, _) => {
+                state.isPending = true;
+            })
+            .addCase(fetchRecipeData.pending, (state, action) => {
                 state.isPending = true;
             })
             .addCase(fetchStartValue.fulfilled, (state, action) => {
@@ -102,6 +122,10 @@ const recipesSlice = createSlice({
                     ...responseArray,
                 ];
             })
+            .addCase(fetchRecipeData.fulfilled, (state, action) => {
+                state.isPending = false;
+                state.lastOpen = action.payload;
+            })
             .addCase(fetchStartValue.rejected, (state, _) => {
                 state.isPending = false;
             })
@@ -109,6 +133,9 @@ const recipesSlice = createSlice({
                 state.isPending = false;
             })
             .addCase(fetchSearchQuery.rejected, (state, _) => {
+                state.isPending = false;
+            })
+            .addCase(fetchRecipeData.rejected, (state, action) => {
                 state.isPending = false;
             });
     },
@@ -119,5 +146,10 @@ export {
     fetchCategoriesRecipes,
     fetchSearchQuery,
     fetchMoreRecipes,
+    fetchRecipeData,
 };
 export default recipesSlice.reducer;
+
+// fetchDataFavorite: (state, action) => {
+//     state.lastOpen = action.payload;
+// },

@@ -15,6 +15,7 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import PostDetails from './components/Post/PostDetails';
 import ShoppingListPage from './pages/ShoppingListPage';
+import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/home/Dev" element={<DevComponents />} />
 
                     <Route path="/home/:link" element={<PostDetails />} />
+                    <Route path="/home/favorites" element={<FavoritesPage />} />
 
                     <Route path="*" element={<NotFound />} />
                 </Route>

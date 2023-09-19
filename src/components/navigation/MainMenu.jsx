@@ -30,16 +30,16 @@ const MainMenu = ({ style, close }) => {
             </li>
             <li>
                 <NavLinks href="#" onClick={close}>
-                    Add recipes
+                    Add recipes - in progress
                 </NavLinks>
             </li>
             <li>
                 <NavLinks href="#" onClick={close}>
-                    My recipes
+                    My recipes - in progress
                 </NavLinks>
             </li>
             <li>
-                <NavLinks href="#" onClick={close}>
+                <NavLinks to={'/home/favorites'} onClick={close}>
                     Favorites
                 </NavLinks>
             </li>

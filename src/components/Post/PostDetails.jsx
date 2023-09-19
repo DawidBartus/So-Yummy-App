@@ -14,21 +14,30 @@ import { ListContainer } from '../ShoppingList/ShoppingListStyled';
 import { BigParagraph, MediumParagraph } from '../reusableComponents/Text';
 import IngredientsList from './IngredientsList';
 import StepList from './StepList';
+import AddToFav from '../reusableComponents/AddToFav';
+
+import { fetchRecipeData } from '../../redux/recipesSlice';
 
 const PostDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { link } = useParams();
-    const id = link.split('_')[0].toLocaleLowerCase();
+    const id = link?.split('_')[0]?.toLocaleLowerCase();
+    const uriID = link?.split('_')[1]?.toLocaleLowerCase();
+    const isLoading = useSelector((state) => state.recipes.isPending);
 
-    const recipe = useSelector(
+    const recipeFromLastOpen = useSelector((state) => state.recipes.lastOpen);
+
+    const recipeFromCat = useSelector(
         (state) => state.recipes.categoriesRecipes[id]
     )?.find((elem) => elem.recipeId === link);
-    const searchRecipe = useSelector(
+
+    const recipeFromFound = useSelector(
         (state) => state.recipes.foundRecipes
     )?.find((elem) => elem.recipeId === link);
 
-    const foundRecipe = recipe || searchRecipe;
+    let foundRecipe = recipeFromCat || recipeFromFound || recipeFromLastOpen;
+
     const list = useSelector((state) => state.shoppingList);
 
     useEffect(
@@ -41,10 +50,20 @@ const PostDetails = () => {
     );
 
     useEffect(() => {
-        if (foundRecipe === undefined) {
-            setTimeout(() => navigate('/home'), 2000);
+        if (!foundRecipe && uriID) {
+            dispatch(fetchRecipeData(uriID));
         }
-    }, [foundRecipe, navigate]);
+
+        if (foundRecipe === undefined) {
+            const timeoutId = setTimeout(() => {
+                navigate('/home');
+            }, 2000);
+
+            return () => {
+                clearTimeout(timeoutId);
+            };
+        }
+    }, [dispatch, foundRecipe, navigate, uriID]);
 
     if (foundRecipe === undefined) {
         return (
@@ -69,6 +88,7 @@ const PostDetails = () => {
     const {
         label,
         url,
+        uri,
         source,
         cuisineType,
         calories,
@@ -79,47 +99,60 @@ const PostDetails = () => {
     } = foundRecipe;
 
     return (
-        <PostContainerDetails>
-            <div>
-                <RecipeHeader>{label}</RecipeHeader>
+        <>
+            {!isLoading && (
+                <PostContainerDetails>
+                    <div>
+                        <RecipeHeader>
+                            {label}{' '}
+                            <AddToFav recipeName={label} recipeId={uri} />
+                        </RecipeHeader>
 
-                <PageOutsideLink
-                    style={{ fontSize: 18, textDecoration: 'underline' }}
-                    href={url}
-                    rel="noreferrer"
-                    target="_blank"
-                >
-                    Source: {source}
-                </PageOutsideLink>
+                        <PageOutsideLink
+                            style={{
+                                fontSize: 18,
+                                textDecoration: 'underline',
+                            }}
+                            href={url}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Source: {source}
+                        </PageOutsideLink>
 
-                <MediumParagraph>Cuisine type: {cuisineType}</MediumParagraph>
-                <MediumParagraph>
-                    {Math.ceil(calories)} kcal / {Math.ceil(totalWeight)}g {}
-                </MediumParagraph>
-                <MediumParagraph>
-                    {calcKcal(calories, totalWeight)} kcal / 100g
-                </MediumParagraph>
-            </div>
-            <ContentHolder>
-                <ImgHolder>
-                    <PostBackground src={images.url} alt={label} />
-                </ImgHolder>
+                        <MediumParagraph>
+                            Cuisine type: {cuisineType}
+                        </MediumParagraph>
+                        <MediumParagraph>
+                            {Math.ceil(calories)} kcal /{' '}
+                            {Math.ceil(totalWeight)}g {}
+                        </MediumParagraph>
+                        <MediumParagraph>
+                            {calcKcal(calories, totalWeight)} kcal / 100g
+                        </MediumParagraph>
+                    </div>
+                    <ContentHolder>
+                        <ImgHolder>
+                            <PostBackground src={images.url} alt={label} />
+                        </ImgHolder>
 
-                <StepList stepArray={ingredientLines} />
+                        <StepList stepArray={ingredientLines} />
 
-                <ListContainer>
-                    <BigParagraph style={{ marginBottom: 30 }}>
-                        Add to shopping list:
-                    </BigParagraph>
-                    <IngredientsList
-                        ingredients={ingredients}
-                        addItem={addToShoppingList}
-                        deleteItem={deleteFromShoppingList}
-                        itemList={list.listFromLocalStorage}
-                    />
-                </ListContainer>
-            </ContentHolder>
-        </PostContainerDetails>
+                        <ListContainer>
+                            <BigParagraph style={{ marginBottom: 30 }}>
+                                Add to shopping list:
+                            </BigParagraph>
+                            <IngredientsList
+                                ingredients={ingredients}
+                                addItem={addToShoppingList}
+                                deleteItem={deleteFromShoppingList}
+                                itemList={list.listFromLocalStorage}
+                            />
+                        </ListContainer>
+                    </ContentHolder>
+                </PostContainerDetails>
+            )}
+        </>
     );
 };
 

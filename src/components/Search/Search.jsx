@@ -6,6 +6,7 @@ import Loader from '../reusableComponents/Loader';
 import { SectionHeader } from '../reusableComponents/Headers';
 import { SearchForm } from '../reusableComponents/Inputs';
 import { SecondaryOutlet } from '../reusableComponents/Sections';
+import TypeComponent from '../TypeAnimation/TypeComponent';
 
 const Search = () => {
     const [query, setQuery] = useState('');
@@ -37,7 +38,9 @@ const Search = () => {
                     gap: 30,
                 }}
             >
-                <SectionHeader>Search: {query && query}</SectionHeader>
+                <SectionHeader>
+                    <TypeComponent />
+                </SectionHeader>
 
                 <SearchForm
                     formId={'query'}

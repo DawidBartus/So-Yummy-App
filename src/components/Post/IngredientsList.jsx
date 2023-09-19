@@ -36,7 +36,7 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
                         style={{ borderRadius: '8px' }}
                     />
 
-                    <MediumParagraph>
+                    <MediumParagraph style={{ maxWidth: 250 }}>
                         {getItemMeasure(
                             elem.quantity,
                             elem.weight,
