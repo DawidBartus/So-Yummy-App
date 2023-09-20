@@ -1,4 +1,4 @@
-# App Project
+# So-yummy-app
 
 An App with collection of recipes where user can easily search for interesting recipe, save favorite one, create shopping list and save his own recipe.
 
@@ -20,11 +20,11 @@ You can enter the "/home" route simply by clicking the fork icon on the welcome 
 
 #### Dark/light theme
 
-Thanks to styled-component's <ThemeProvider>, users can easily switch between dark and light modes. All components are smoothly transition within 500ms for an excellent user experience.
+Thanks to styled-component's _ThemeProvider_, users can easily switch between dark and light modes. All components are smoothly transition within 500ms for an excellent user experience.
 
 #### Categories
 
-Users can discover interesting recipes based on their chosen category. If the first page isn't enough, users can easily load more recipes by simply clicking on the <Load more button>.
+Users can discover interesting recipes based on their chosen category. If the first page isn't enough, users can easily load more recipes by simply clicking on the _Load more button_.
 
 > In future developments users will have possibility to modify categories (add or remove) based on their preferences.
 
