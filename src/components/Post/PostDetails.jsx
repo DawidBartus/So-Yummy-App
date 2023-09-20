@@ -14,9 +14,11 @@ import { ListContainer } from '../ShoppingList/ShoppingListStyled';
 import { BigParagraph, MediumParagraph } from '../reusableComponents/Text';
 import IngredientsList from './IngredientsList';
 import StepList from './StepList';
-import AddToFav from '../reusableComponents/AddToFav';
+import ToggleFav from '../reusableComponents/ToggleFav';
 
 import { fetchRecipeData } from '../../redux/recipesSlice';
+import NotFound from '../NotFound/NotFound';
+import Loader from '../reusableComponents/Loader';
 
 const PostDetails = () => {
     const navigate = useNavigate();
@@ -25,6 +27,7 @@ const PostDetails = () => {
     const id = link?.split('_')[0]?.toLocaleLowerCase();
     const uriID = link?.split('_')[1]?.toLocaleLowerCase();
     const isLoading = useSelector((state) => state.recipes.isPending);
+    const favList = useSelector((state) => state.favoriteRecipes.recipeList);
 
     const recipeFromLastOpen = useSelector((state) => state.recipes.lastOpen);
 
@@ -36,7 +39,11 @@ const PostDetails = () => {
         (state) => state.recipes.foundRecipes
     )?.find((elem) => elem.recipeId === link);
 
-    let foundRecipe = recipeFromCat || recipeFromFound || recipeFromLastOpen;
+    let foundRecipe = recipeFromCat || recipeFromFound;
+    if (!foundRecipe) {
+        foundRecipe =
+            recipeFromLastOpen?.uri === uriID ? recipeFromLastOpen : undefined;
+    }
 
     const list = useSelector((state) => state.shoppingList);
 
@@ -54,7 +61,7 @@ const PostDetails = () => {
             dispatch(fetchRecipeData(uriID));
         }
 
-        if (foundRecipe === undefined) {
+        if (!foundRecipe) {
             const timeoutId = setTimeout(() => {
                 navigate('/home');
             }, 2000);
@@ -65,11 +72,14 @@ const PostDetails = () => {
         }
     }, [dispatch, foundRecipe, navigate, uriID]);
 
-    if (foundRecipe === undefined) {
+    if (!foundRecipe) {
         return (
-            <PostContainerDetails>
-                <RecipeHeader>Page not found</RecipeHeader>
-            </PostContainerDetails>
+            <>
+                {isLoading && <Loader />}
+                <PostContainerDetails>
+                    {!isLoading && <NotFound />}
+                </PostContainerDetails>
+            </>
         );
     }
 
@@ -98,14 +108,23 @@ const PostDetails = () => {
         ingredients,
     } = foundRecipe;
 
+    const isInFav = favList.find((elem) => elem.name === label)
+        ? 'red'
+        : '#817676d5';
+    console.log(isInFav);
     return (
         <>
+            {isLoading && <Loader />}
             {!isLoading && (
                 <PostContainerDetails>
                     <div>
                         <RecipeHeader>
-                            {label}{' '}
-                            <AddToFav recipeName={label} recipeId={uri} />
+                            {label}
+                            <ToggleFav
+                                inFav={isInFav}
+                                recipeName={label}
+                                recipeId={uri}
+                            />
                         </RecipeHeader>
 
                         <PageOutsideLink

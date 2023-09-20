@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router';
-import Navigation from '../components/navigation/Navigation';
+import Navigation from '../components/navigation/index';
 import {
     MainSection,
     OutletSection,
 } from '../components/reusableComponents/Sections';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 
 const NavigationPage = () => {
     return (

@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
 import { BigParagraph } from '../reusableComponents/Text';
+import { SubsectionHeader } from '../reusableComponents/Headers';
+import FavSection, { FavListElement } from './FavoriteStyled';
+import { LinkWrapper } from '../reusableComponents/Buttons';
+import ToggleFav from '../reusableComponents/ToggleFav';
 
-const Favorites = () => {
+const FavList = () => {
     const favoritesRecipes = useSelector(
         (state) => state.favoriteRecipes.recipeList
     );
@@ -11,14 +15,29 @@ const Favorites = () => {
     }
 
     return (
-        <ul>
-            {favoritesRecipes.map((elem) => (
-                <li key={elem.name}>
-                    <BigParagraph>{elem.name}</BigParagraph>
-                </li>
-            ))}
-        </ul>
+        <FavSection>
+            <SubsectionHeader style={{ marginBottom: '30px' }}>
+                Favorite
+            </SubsectionHeader>
+            <ul>
+                {favoritesRecipes.map((elem) => (
+                    <>
+                        <FavListElement key={elem.name}>
+                            <LinkWrapper to={`/home/fav_${elem.uri}`}>
+                                <BigParagraph style={{ padding: '12px 24px' }}>
+                                    {elem.name}
+                                    <ToggleFav
+                                        recipeName={elem.name}
+                                        recipeId={elem.uri}
+                                    />
+                                </BigParagraph>
+                            </LinkWrapper>
+                        </FavListElement>
+                    </>
+                ))}
+            </ul>
+        </FavSection>
     );
 };
 
-export default Favorites;
+export default FavList;

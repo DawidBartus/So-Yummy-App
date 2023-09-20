@@ -1,7 +1,7 @@
-import ShoppingList from '../components/ShoppingList/ShoppingList';
+import Shopping from '../components/ShoppingList';
 
 const ShoppingListPage = () => {
-    return <ShoppingList />;
+    return <Shopping />;
 };
 
 export default ShoppingListPage;

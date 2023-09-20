@@ -3,7 +3,6 @@ import './App.css';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import lightTheme, { darkTheme } from './Theme';
-import Welcome from './pages/Welcome';
 import NotFound from './components/NotFound/NotFound';
 import RegisterForm from './pages/RegisterPage';
 import LogInPage from './pages/LogInPage';
@@ -16,6 +15,7 @@ import SearchPage from './pages/SearchPage';
 import PostDetails from './components/Post/PostDetails';
 import ShoppingListPage from './pages/ShoppingListPage';
 import FavoritesPage from './pages/FavoritesPage';
+import WelcomePage from './pages/Welcome';
 
 function App() {
     const isDarkMode = useSelector((state) => state.pageMode.pageMode);
@@ -23,7 +23,7 @@ function App() {
     return (
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <Routes>
-                <Route path="/" element={<Welcome />} />
+                <Route path="/" element={<WelcomePage />} />
                 <Route path="/signUp" element={<RegisterForm />} />
                 <Route path="/signIn" element={<LogInPage />} />
 

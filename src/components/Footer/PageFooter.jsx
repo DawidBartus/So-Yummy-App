@@ -20,7 +20,7 @@ import TextParagraph, {
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
 
-const Footer = () => {
+const PageFooter = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSubscribe = (e) => {
@@ -108,4 +108,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default PageFooter;

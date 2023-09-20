@@ -57,7 +57,7 @@ const CategoriesItems = () => {
 
             {!isPending && (
                 <PaginationButton onClick={() => loadMore()}>
-                    Next Page
+                    Load more
                 </PaginationButton>
             )}
         </>
