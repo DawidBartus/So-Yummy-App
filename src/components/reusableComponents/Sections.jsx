@@ -51,6 +51,7 @@ const OutletSection = styled.section`
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px 10px 40px;
+    min-height: 70vh;
     box-sizing: border-box;
 `;
 
@@ -60,7 +61,7 @@ const SecondaryOutlet = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    min-height: 30vh;
+    min-height: 60vh;
     box-sizing: border-box;
 `;
 
