@@ -41,4 +41,4 @@ You can enter the "/home" route simply by clicking the fork icon on the welcome 
 
 ### Recipe API:
 
-![_Edamam recipe API_](https://www.edamam.com/)
+> [_Edamam recipe API_](https://www.edamam.com/)
