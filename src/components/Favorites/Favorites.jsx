@@ -11,7 +11,7 @@ const FavList = () => {
     );
 
     if (favoritesRecipes.length === 0) {
-        return <p>Add your first</p>;
+        return <SubsectionHeader>Add your first</SubsectionHeader>;
     }
 
     return (
@@ -26,12 +26,12 @@ const FavList = () => {
                             <LinkWrapper to={`/home/fav_${elem.uri}`}>
                                 <BigParagraph style={{ padding: '12px 24px' }}>
                                     {elem.name}
-                                    <ToggleFav
-                                        recipeName={elem.name}
-                                        recipeId={elem.uri}
-                                    />
                                 </BigParagraph>
                             </LinkWrapper>
+                            <ToggleFav
+                                recipeName={elem.name}
+                                recipeId={elem.uri}
+                            />
                         </FavListElement>
                     </>
                 ))}

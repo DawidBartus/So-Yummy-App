@@ -23,7 +23,6 @@ const PostBackground = styled.img`
     width: 100%;
     height: 100%;
     min-width: 300px;
-    border-radius: 8px;
     overflow: hidden;
     &:hover {
         scale: 1.05;
@@ -54,6 +53,8 @@ const FullImgMobile = styled.img`
 
 const ImgHolder = styled.div`
     width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
     height: auto;
     max-width: 336px;
     max-height: 336px;

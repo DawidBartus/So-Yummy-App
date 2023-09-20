@@ -9,8 +9,7 @@ const IconContainer = styled.span``;
 const Icon = styled(FontAwesomeIcon)`
     width: 35px;
     height: 30px;
-    margin-left: 20px;
-    margin-bottom: 5px;
+    margin: 0 12px;
     path {
         cursor: pointer;
         transition: 500ms;

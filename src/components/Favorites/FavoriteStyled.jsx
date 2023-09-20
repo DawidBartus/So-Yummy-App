@@ -5,10 +5,13 @@ const FavSection = styled.section`
 `;
 
 const FavListElement = styled.li`
-    background-color: ${({ theme }) => theme.standardLightGreen};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
     border-radius: 8px;
     cursor: pointer;
+    background-color: ${({ theme }) => theme.standardLightGreen};
     &:hover {
         background-color: ${({ theme }) => theme.standardGreen};
     }
