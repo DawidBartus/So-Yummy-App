@@ -23,7 +23,9 @@ const FavList = () => {
                             to={`/home/fav_${elem.uri}`}
                             style={{ width: '100%' }}
                         >
-                            <BigParagraph style={{ padding: '12px 24px' }}>
+                            <BigParagraph
+                                style={{ padding: '12px 24px', color: 'black' }}
+                            >
                                 {elem.name}
                             </BigParagraph>
                         </LinkWrapper>
