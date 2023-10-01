@@ -100,6 +100,9 @@ const DetailsListItem = styled.li`
         flex-direction: row;
     }
 `;
+const DetailsFirst = styled(DetailsListItem)`
+    background-color: ${({ theme }) => theme.transparentBg};
+`;
 
 const ListDisc = styled.li`
     padding-bottom: 10px;
@@ -126,5 +129,6 @@ export {
     PostContainerDetails,
     DetailsListItem,
     ListDisc,
+    DetailsFirst,
 };
 export default PostContainer;

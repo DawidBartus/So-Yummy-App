@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import { SubsectionHeader } from '../reusableComponents/Headers';
 
 const FavSection = styled.section`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const FavListElement = styled.li`
@@ -16,5 +20,11 @@ const FavListElement = styled.li`
         background-color: ${({ theme }) => theme.standardGreen};
     }
 `;
-export { FavListElement };
+
+const FavHeader = styled(SubsectionHeader)`
+    margin-bottom: 30px;
+    width: 100%;
+`;
+
+export { FavListElement, FavHeader };
 export default FavSection;

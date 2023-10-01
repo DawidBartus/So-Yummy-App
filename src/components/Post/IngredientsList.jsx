@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { RoundedGreenToDark } from '../reusableComponents/Buttons';
 import { MediumParagraph } from '../reusableComponents/Text';
-import { DetailsListItem } from './PostStyledElements';
+import { DetailsFirst, DetailsListItem } from './PostStyledElements';
 
 const DetailsButton = styled(RoundedGreenToDark)`
     min-width: 145px;
@@ -12,6 +12,7 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
     if (itemList === undefined) {
         return;
     }
+
     const getItemMeasure = (quantity, weight, measure, food) => {
         const itemQ = Math.ceil(quantity).toFixed();
         const itemW = Math.ceil(weight).toFixed();
@@ -26,6 +27,46 @@ const IngredientsList = ({ ingredients, addItem, itemList, deleteItem }) => {
 
     return (
         <ul>
+            <DetailsFirst>
+                {ingredients.some((ingredient) =>
+                    itemList.some((elem) => elem.food === ingredient.food)
+                ) ? (
+                    <>
+                        <MediumParagraph>Delete all:</MediumParagraph>
+                        <DetailsButton
+                            onClick={() =>
+                                ingredients.forEach((element) => {
+                                    deleteItem(
+                                        element.food,
+                                        element.quantity,
+                                        element.measure
+                                    );
+                                })
+                            }
+                        >
+                            Delete all
+                        </DetailsButton>
+                    </>
+                ) : (
+                    <>
+                        <MediumParagraph>Add all:</MediumParagraph>
+                        <DetailsButton
+                            onClick={() =>
+                                ingredients.forEach((element) => {
+                                    addItem(
+                                        element.food,
+                                        element.quantity,
+                                        element.measure
+                                    );
+                                })
+                            }
+                        >
+                            Add all
+                        </DetailsButton>
+                    </>
+                )}
+            </DetailsFirst>
+
             {ingredients.map((elem, index) => (
                 <DetailsListItem key={elem.food + index}>
                     <img

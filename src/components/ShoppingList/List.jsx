@@ -4,7 +4,11 @@ import ListItem, { ListHolder } from './ShoppingListStyled';
 
 const List = ({ currentList, listFunction, actionType }) => {
     if (currentList.length === 0) {
-        return <MediumParagraph>List is empty</MediumParagraph>;
+        return (
+            <MediumParagraph style={{ marginTop: 10 }}>
+                List is empty
+            </MediumParagraph>
+        );
     }
 
     return (

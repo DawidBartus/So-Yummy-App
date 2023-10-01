@@ -111,7 +111,7 @@ const PostDetails = () => {
     const isInFav = favList.find((elem) => elem.name === label)
         ? 'red'
         : '#817676d5';
-    console.log(isInFav);
+
     return (
         <>
             {isLoading && <Loader />}
